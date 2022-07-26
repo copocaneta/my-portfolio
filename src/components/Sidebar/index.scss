@@ -1,5 +1,7 @@
+@import '../../variables.scss';
+
 .nav-bar {
-  background: #181818;
+  background: $navbar-bg-light;
   width: 68px;
   height: 100%;
   position: absolute;
@@ -14,6 +16,7 @@
       margin: 8px auto;
       width: 54px;
       height: auto;
+      filter: drop-shadow(2px 2px 1px rgba(255, 255, 255, 0.9));
 
       &.sub-logo {
         width: 50px;
@@ -31,7 +34,7 @@
 
     a {
       font-size: 22px;
-      color: #4d4d4e;
+      color: $secondary-color-light;
       display: block;
       line-height: 51px;
       height: 51px;
@@ -43,7 +46,7 @@
       }
 
       &:hover {
-        color: #fff700;
+        color: $text-color-dark;
         svg {
           opacity: 0;
         }
@@ -54,6 +57,7 @@
       &:after {
         content: '';
         font-size: 9px;
+        font-weight: 400;
         letter-spacing: 2px;
         position: absolute;
         bottom: 0;
@@ -68,6 +72,9 @@
           content: 'HOME';
         }
       }
+      svg {
+        color: $text-color-dark;
+      }
     }
     a.about-link {
       &:after {
@@ -81,7 +88,7 @@
     }
     a.active {
       svg {
-        color: #ffd700;
+        color: $alt-color-light;
       }
     }
   }
@@ -100,9 +107,12 @@
         display: block;
         font-size: 15px;
         line-height: 16px;
+        svg {
+          color: $text-color-dark;
+        }
 
         &:hover svg {
-          color: #ffd700;
+          color: $alt-color-light;
         }
       }
     }
