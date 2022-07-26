@@ -1,3 +1,13 @@
+import {
+  faAngular,
+  faCss3,
+  faGitAlt,
+  faHtml5,
+  faJs,
+  faJsSquare,
+  faReact,
+} from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import AnimatedLetters from '../AnimatedLetters';
 import './index.scss';
@@ -44,6 +54,28 @@ const About = () => {
           such as Moralis and Alchemy. I've helped them build several projects
           that innovated the Web3 scene.{' '}
         </p>
+      </div>
+      <div className="stage-cube-cont">
+        <div className="cubespinner">
+          <div className="face1">
+            <FontAwesomeIcon icon={faAngular} color="#dd0031" />
+          </div>
+          <div className="face2">
+            <FontAwesomeIcon icon={faHtml5} color="#F06529" />
+          </div>
+          <div className="face3">
+            <FontAwesomeIcon icon={faCss3} color="#28a4D9" />
+          </div>
+          <div className="face4">
+            <FontAwesomeIcon icon={faReact} color="#5Ed4f4" />
+          </div>
+          <div className="face5">
+            <FontAwesomeIcon icon={faJsSquare} color="#EFD81D" />
+          </div>
+          <div className="face6">
+            <FontAwesomeIcon icon={faGitAlt} color="#EC4D28" />
+          </div>
+        </div>
       </div>
     </div>
   );
