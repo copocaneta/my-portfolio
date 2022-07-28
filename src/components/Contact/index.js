@@ -4,6 +4,7 @@ import AnimatedLetters from '../AnimatedLetters';
 import emailjs from '@emailjs/browser';
 import './index.scss';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -174,6 +175,24 @@ const Contact = () => {
               />
             </form>
           </div>
+        </div>
+        <div className="info-map">
+          Thiago Bernardi,
+          <br />
+          São Paulo, SP <br />
+          Brasil
+          <br />
+        </div>
+        <div className="map-wrap">
+          <MapContainer
+            center={[-23.548059243667304, -46.63453909542767]}
+            zoom={3}
+          >
+            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            <Marker position={[-23.548059243667304, -46.63453909542767]}>
+              <Popup>Thiago Bernardi</Popup>
+            </Marker>
+          </MapContainer>
         </div>
       </div>
       <Loader type="pacman" />
