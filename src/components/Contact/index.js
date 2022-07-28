@@ -1,15 +1,110 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Loader from 'react-loaders';
 import AnimatedLetters from '../AnimatedLetters';
+import emailjs from '@emailjs/browser';
 import './index.scss';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
+
+  const refForm = useRef();
+
+  const refCaptcha = useRef();
+
   useEffect(() => {
     setTimeout(() => {
       setLetterClass('text-animate-hover');
     }, 3000);
   }, []);
+
+  const [open, setOpen] = useState(false);
+
+  const [toSend, setToSend] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  // const testCaptcha = (captchaValue) => {
+  //   console.log(`captchaValue ${captchaValue}`);
+  // };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = refCaptcha.current.getValue();
+    console.log('token', token);
+    const params = {
+      ...toSend,
+      'g-recaptcha-response': token,
+    };
+    emailjs
+      .send(
+        process.env.REACT_APP_EMAIL_JS_SERVICE,
+        process.env.REACT_APP_EMAIL_JS_TEMPLATE,
+        params,
+        process.env.REACT_APP_EMAIL_JS_USER
+        // `g-recaptcha-response: ${}`
+      )
+      .then(
+        ({ status }) => {
+          console.log('EMAILJS SENT', status.code);
+        },
+        (err) => {
+          console.log('EMAILJS ERROR', err);
+        }
+      );
+  };
+
+  const handleChange = (e) => {
+    setToSend({ ...toSend, [e.target.name]: e.target.value });
+  };
+
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+
+  //   // console.log('teste', process.env.REACT_APP_EMAIL_JS_USER);
+
+  //   console.log('test34', )
+
+  //   emailjs
+  //     .sendForm(
+
+  //     )
+  //     .then(
+  //       (result) => {
+  //         console.log(result.text);
+  //       },
+  //       (error) => {
+  //         console.log(error.text);
+  //       }
+  //     );
+
+  //   // emailjs
+  //   //   .send(
+  //   //     ,
+  //   //     ,
+  //   //     values,
+  //   //
+  //   //   )
+  //   //   .then(
+  //   //     (result) => {
+  //   //       alert(result.text);
+  //   //       window.location.reload(false);
+  //   //     },
+  //   //     (error) => {
+  //   //       alert(error.text);
+  //   //     }
+  //   //   );
+  // };
+
+  // const handleChange = (e) => {
+  //   setValues((values) => ({
+  //     ...values,
+  //     [e.target.name]: e.target.value,
+  //   }));
+  // };
 
   return (
     <>
@@ -27,21 +122,32 @@ const Contact = () => {
             contact me using the form below.
           </p>
           <div className="contact-form">
-            <form action="">
+            <form ref={refForm} onSubmit={handleSubmit}>
               <ul>
                 <li className="half">
-                  <input type="text" name="name" placeholder="Name" required />
+                  <input
+                    type="text"
+                    name="name"
+                    value={open.name}
+                    onChange={handleChange}
+                    placeholder="Name"
+                    required
+                  />
                 </li>
                 <li className="half">
                   <input
                     type="email"
                     name="email"
+                    value={open.email}
+                    onChange={handleChange}
                     placeholder="E-mail"
                     required
                   />
                 </li>
                 <li>
                   <input
+                    value={open.subject}
+                    onChange={handleChange}
                     placeholder="Subject"
                     type="text"
                     name="subject"
@@ -50,6 +156,8 @@ const Contact = () => {
                 </li>
                 <li>
                   <textarea
+                    value={open.message}
+                    onChange={handleChange}
                     placeholder="Message"
                     name="message"
                     required
@@ -59,6 +167,11 @@ const Contact = () => {
                   <input type="submit" className="flat-button" value="SEND" />
                 </li>
               </ul>
+              <ReCAPTCHA
+                ref={refCaptcha}
+                sitekey={process.env.REACT_APP_SITE_KEY}
+                // onChange={testCaptcha}
+              />
             </form>
           </div>
         </div>
