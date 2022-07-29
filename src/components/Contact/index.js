@@ -114,7 +114,7 @@ const Contact = () => {
           <h1>
             <AnimatedLetters
               letterClass={letterClass}
-              strArr={['C', 'o', 'n', 't', 'a', 'c', 't', ' ', 'm', 'e']}
+              strArr={'Contact me'.split('')}
               idx={15}
             />
           </h1>
