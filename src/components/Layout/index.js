@@ -1,20 +1,28 @@
+import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../Sidebar';
 import './index.scss';
 
 const Layout = () => {
   return (
-    <div className="App">
+    <Grid
+      templateColumns="68px 1fr"
+      maxW={'100%'}
+      width={'100%'}
+      height={'100%'}
+    >
+      {/* <div className="App"> */}
       <Sidebar />
-      <div className="page">
+      <GridItem className="page">
         <span className="tags top-tags">&lt;body&gt;</span>
         <Outlet />
         <span className="tags bottom-tags"></span>
         &lt;/body&gt;
         <br />
         <span className="bottom-tag-html">&lt;/html&gt;</span>
-      </div>
-    </div>
+      </GridItem>
+      {/* </div> */}
+    </Grid>
   );
 };
 
