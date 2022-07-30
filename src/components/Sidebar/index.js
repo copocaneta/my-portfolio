@@ -32,9 +32,14 @@ const Sidebar = () => {
       justifyContent={'space-between'}
     >
       {/* Logo */}
-      <Link as={ReactLink} className="logo" to="/">
+      <Link as={ReactLink} className="logo" to="/" padding={'8px 0'}>
         <Image src={LogoTb} alt="logo" />
-        <Image className="sub-logo" src={LogoSubtitle} alt="Thiago Bernardi" />
+        <Image
+          className="sub-logo"
+          src={LogoSubtitle}
+          alt="Thiago Bernardi"
+          w={'50px'}
+        />
       </Link>
       {/* Menu */}
       <Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
