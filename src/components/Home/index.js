@@ -10,25 +10,6 @@ import Loader from 'react-loaders';
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
 
-  const nameArray = ['h', 'i', 'a', 'g', 'o'];
-  const lastNameArray = ['e', 'r', 'n', 'a', 'r', 'd', 'i'];
-
-  const jobArray = [
-    'w',
-    'e',
-    'b',
-    ' ',
-    'd',
-    'e',
-    'v',
-    'e',
-    'l',
-    'o',
-    'p',
-    'e',
-    'r',
-  ];
-
   useEffect(() => {
     setTimeout(() => {
       setLetterClass('text-animate-hover');
@@ -48,19 +29,19 @@ const Home = () => {
             <img src={LogoTitleT} alt="Thiago" className="letter-t" />
             <AnimatedLetters
               letterClass={letterClass}
-              strArr={nameArray}
+              strArr={'hiago'.split('')}
               idx={15}
             />
             <img src={LogoTitleB} alt="Bernardi" className="letter-b" />
             <AnimatedLetters
               letterClass={letterClass}
-              strArr={lastNameArray}
+              strArr={'ernardi'.split('')}
               idx={20}
             />
             <br />
             <AnimatedLetters
               letterClass={letterClass}
-              strArr={jobArray}
+              strArr={'web developer'.split('')}
               idx={27}
             />
           </h1>
