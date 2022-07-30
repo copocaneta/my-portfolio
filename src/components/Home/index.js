@@ -18,9 +18,19 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <Grid className="container home-page" templateColumns={'1fr 1fr'}>
-        <GridItem className="text-zone">
+    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
+      <Grid
+        className="container home-page"
+        templateColumns={'1fr 1fr'}
+        w={'100%'}
+        mx={'50px'}
+      >
+        <GridItem
+          className="text-zone"
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+        >
           <h1>
             <span className={letterClass}>H</span>
             <span className={`${letterClass} _12`}>i,</span>
@@ -56,7 +66,7 @@ const Home = () => {
         </GridItem>
       </Grid>
       <Loader type="pacman" />
-    </>
+    </Box>
   );
 };
 
