@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import AnimatedLetters from '../AnimatedLetters';
 import Logo from '../Logo';
 import Loader from 'react-loaders';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -18,8 +19,8 @@ const Home = () => {
 
   return (
     <>
-      <div className="container home-page">
-        <div className="text-zone">
+      <Grid className="container home-page" templateColumns={'1fr 1fr'}>
+        <GridItem className="text-zone">
           <h1>
             <span className={letterClass}>H</span>
             <span className={`${letterClass} _12`}>i,</span>
@@ -49,9 +50,11 @@ const Home = () => {
           <Link to="/contact" className="flat-button">
             CONTACT ME
           </Link>
-        </div>
-        <Logo />
-      </div>
+        </GridItem>
+        <GridItem>
+          <Logo />
+        </GridItem>
+      </Grid>
       <Loader type="pacman" />
     </>
   );
