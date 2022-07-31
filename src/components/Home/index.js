@@ -7,6 +7,7 @@ import AnimatedLetters from '../AnimatedLetters';
 import Logo from '../Logo';
 import Loader from 'react-loaders';
 import { Box, Grid, GridItem } from '@chakra-ui/react';
+import HomeAnimation from '../HomeAnimation';
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -62,7 +63,7 @@ const Home = () => {
           </Link>
         </GridItem>
         <GridItem>
-          <Logo />
+          <HomeAnimation />
         </GridItem>
       </Grid>
       <Loader type="pacman" />
