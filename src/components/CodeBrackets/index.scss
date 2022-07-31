@@ -9,6 +9,10 @@ $colors: $alt-color-light, $alt-color-light, $primary-color-light,
   perspective-origin: 50% 50%;
   position: relative;
   left: -41%;
+  opacity: 0;
+  transform-style: preserve-3d;
+  animation: fadeIn 1.4s forwards;
+  animation-delay: 2s;
 }
 
 .svg {
