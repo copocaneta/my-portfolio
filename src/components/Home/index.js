@@ -62,7 +62,7 @@ const Home = () => {
             CONTACT ME
           </Link>
         </GridItem>
-        <GridItem>
+        <GridItem display={'flex'}>
           <HomeAnimation />
         </GridItem>
       </Grid>
