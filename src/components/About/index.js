@@ -1,3 +1,4 @@
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import {
   faAngular,
   faCss3,
@@ -22,9 +23,19 @@ const About = () => {
     }, 3000);
   }, []);
   return (
-    <>
-      <div className="container about-page">
-        <div className="text-zone">
+    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
+      <Grid
+        className="container about-page"
+        templateColumns={'1fr 1fr'}
+        w={'100%'}
+        mx={'50px'}
+      >
+        <GridItem
+          className="text-zone"
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+        >
           <h1>
             <AnimatedLetters
               letterClass={letterClass}
@@ -56,8 +67,8 @@ const About = () => {
             libraries such as Moralis and Alchemy. I've helped them build
             several projects that innovated the Web3 scene.{' '}
           </p>
-        </div>
-        <div className="stage-cube-cont">
+        </GridItem>
+        <GridItem className="stage-cube-cont">
           <div className="cubespinner">
             <div className="face1">
               <FontAwesomeIcon icon={faAngular} color="#dd0031" />
@@ -78,11 +89,11 @@ const About = () => {
               <FontAwesomeIcon icon={faGitAlt} color="#EC4D28" />
             </div>
           </div>
-        </div>
-      </div>
+        </GridItem>
+      </Grid>
 
       <Loader type="pacman" />
-    </>
+    </Box>
   );
 };
 
