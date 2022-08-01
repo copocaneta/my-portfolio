@@ -6,7 +6,8 @@ import './index.scss';
 const Layout = () => {
   return (
     <Grid
-      templateColumns="68px 1fr"
+      templateColumns={{ base: '1fr', lg: '68px 1fr' }}
+      templateRows={{ base: '100px 1fr', lg: 'auto' }}
       maxW={'100%'}
       width={'100%'}
       height={'100%'}

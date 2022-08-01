@@ -15,21 +15,40 @@ import {
   faLinkedin,
   faStackOverflow,
 } from '@fortawesome/free-brands-svg-icons';
-import { Box, GridItem, Image, Link, useTheme } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerCloseButton,
+  DrawerContent,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  GridItem,
+  Image,
+  Input,
+  Link,
+  useDisclosure,
+  useTheme,
+} from '@chakra-ui/react';
+import { useRef } from 'react';
+import ResponsiveMenu from '../ResponsiveMenu';
 
 const Sidebar = () => {
   const theme = useTheme();
 
   return (
     <GridItem
-      w={'68px'}
+      w={{ base: '100%', lg: '68px' }}
       background={theme.colors.navBarBgLight}
-      height={'100%'}
-      minHeight={'500px'}
+      height={{ base: '90px', lg: '100%' }}
+      minHeight={{ base: '90px', lg: '500px' }}
       className="nav-bar"
       display={'flex'}
-      flexDirection={'column'}
+      flexDirection={{ base: 'row', lg: 'column' }}
       justifyContent={'space-between'}
+      zIndex={4}
     >
       {/* Logo */}
       <Link as={ReactLink} className="logo" to="/" padding={'8px 0'}>
@@ -41,8 +60,14 @@ const Sidebar = () => {
           w={'50px'}
         />
       </Link>
-      {/* Menu */}
-      <Box display={'flex'} alignItems={'center'} flexDirection={'column'}>
+      {/* Responsive Menu */}
+      <ResponsiveMenu />
+      {/* Desktop Menu */}
+      <Box
+        display={{ base: 'none', lg: 'flex' }}
+        alignItems={'center'}
+        flexDirection={'column'}
+      >
         <nav>
           <NavLink exact="true" activeclassname="active" to="/">
             <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
@@ -74,7 +99,7 @@ const Sidebar = () => {
         </nav>
       </Box>
       {/* Social media icons */}
-      <Box>
+      <Box display={{ base: 'none', lg: 'block' }}>
         <ul>
           <li>
             <Link
