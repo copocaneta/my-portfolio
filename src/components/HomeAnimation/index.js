@@ -16,7 +16,10 @@ const HomeAnimation = () => {
   }, []);
 
   return (
-    <Box className="logo-container brush-wrap">
+    <Box
+      className="logo-container brush-wrap"
+      maxWidth={{ base: '358px', lg: 'initial' }}
+    >
       {/* <img ref={solidLogoRef} className="solid-logo" src={LogoTb} alt="TB" /> */}
 
       <motion.svg height="0" width="0" xmlns="http://www.w3.org/2000/svg">

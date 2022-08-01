@@ -6,11 +6,12 @@ import { useEffect, useState } from 'react';
 import AnimatedLetters from '../AnimatedLetters';
 import Logo from '../Logo';
 import Loader from 'react-loaders';
-import { Box, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text, useTheme } from '@chakra-ui/react';
 import HomeAnimation from '../HomeAnimation';
 
 const Home = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
+  const theme = useTheme();
 
   useEffect(() => {
     setTimeout(() => {
@@ -22,7 +23,7 @@ const Home = () => {
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Grid
         className="container home-page"
-        templateColumns={'1fr 1fr'}
+        templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
         w={'100%'}
         mx={'50px'}
       >
@@ -31,8 +32,14 @@ const Home = () => {
           display={'flex'}
           flexDirection={'column'}
           justifyContent={'center'}
+          zIndex={999999}
         >
-          <h1>
+          <Text
+            as="h1"
+            color={{ base: 'white', lg: theme.colors.textColorLight }}
+            textShadow={{ base: '2px 2px black;', lg: 'none' }}
+            wordBreak={'break-all'}
+          >
             <span className={letterClass}>H</span>
             <span className={`${letterClass} _12`}>i,</span>
             <br />
@@ -56,13 +63,17 @@ const Home = () => {
               strArr={'web developer'.split('')}
               idx={27}
             />
-          </h1>
+          </Text>
           <h2>Fullstack JavaScript Developer</h2>
           <Link to="/contact" className="flat-button">
             CONTACT ME
           </Link>
         </GridItem>
-        <GridItem display={'flex'}>
+        <GridItem
+          zIndex={999998}
+          position={{ base: 'absolute', lg: 'unset' }}
+          display={'flex'}
+        >
           <HomeAnimation />
         </GridItem>
       </Grid>
