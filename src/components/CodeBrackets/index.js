@@ -1,7 +1,16 @@
+import { Box } from '@chakra-ui/react';
 import './index.scss';
 const CodeBrackets = () => {
   return (
-    <div class="wrap">
+    <Box
+      className="wrap"
+      position={{ base: 'absolute', lg: 'inherit' }}
+      top={'-49px'}
+      left={0}
+      height={{ base: 'calc(100vh - 90px)', lg: 'inherit' }}
+      width={{ base: '95vw', lg: 'inherit' }}
+      overflow={{ base: 'hidden', lg: 'inherit' }}
+    >
       <svg class="svg" xmlns="http://www.w3.org/2000/svg">
         <path
           class="fil0"
@@ -150,7 +159,7 @@ const CodeBrackets = () => {
           fill="none"
         />
       </svg>
-    </div>
+    </Box>
   );
 };
 

@@ -18,7 +18,8 @@ const HomeAnimation = () => {
   return (
     <Box
       className="logo-container brush-wrap"
-      maxWidth={{ base: '358px', lg: 'initial' }}
+      maxWidth={{ base: '320px', lg: 'initial' }}
+      position={{ base: 'inherit;', lg: 'relative' }}
     >
       {/* <img ref={solidLogoRef} className="solid-logo" src={LogoTb} alt="TB" /> */}
 
