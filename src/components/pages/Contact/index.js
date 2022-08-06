@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Loader from 'react-loaders';
-import AnimatedLetters from '../AnimatedLetters';
+import AnimatedLetters from '../../AnimatedLetters';
 import emailjs from '@emailjs/browser';
 import './index.scss';
 import ReCAPTCHA from 'react-google-recaptcha';

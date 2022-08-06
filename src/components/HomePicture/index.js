@@ -53,7 +53,7 @@ const HomeAnimation = () => {
         </defs>
       </motion.svg>
       <Image className="svg-image" src={Eu} width={'400px'} height={'400px'} />
-      <CodeBrackets />
+      {/* <CodeBrackets /> */}
     </Box>
   );
 };

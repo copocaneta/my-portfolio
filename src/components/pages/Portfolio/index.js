@@ -1,6 +1,6 @@
 import Loader from 'react-loaders';
 import './index.scss';
-import AnimatedLetters from '../AnimatedLetters';
+import AnimatedLetters from '../../AnimatedLetters';
 import { useState } from 'react';
 
 const Portfolio = () => {
