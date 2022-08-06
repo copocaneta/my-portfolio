@@ -1,7 +1,21 @@
 @import '../../variables.scss';
 
 .logo-container {
+  z-index: 0;
+  aspect-ratio: 1;
+  height: 459px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: auto;
+  margin: auto;
   opacity: 1;
+  svg {
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    // transform: rotateZ(30deg) !important;
+  }
 }
 .svg-image {
   width: 100%;
@@ -10,8 +24,8 @@
   opacity: 0;
 
   transform-style: preserve-3d;
-  animation: fadeIn 1.4s forwards;
-  animation-delay: 1s;
+  animation: fadeIn 1.9s forwards;
+  animation-delay: 1.3s;
   z-index: 9999;
 }
 //animation

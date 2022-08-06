@@ -3,13 +3,13 @@ import './index.scss';
 const CodeBrackets = () => {
   return (
     <Box
-      className="wrap"
-      position={{ base: 'absolute', lg: 'inherit' }}
+      className="wrap floating-elements"
+      position={{ base: 'absolute' }}
       top={'-49px'}
       left={0}
       height={{ base: 'calc(100vh - 90px)', lg: 'inherit' }}
-      width={{ base: '95vw', lg: 'inherit' }}
-      overflow={{ base: 'hidden', lg: 'inherit' }}
+      width={{ base: '92vw', lg: 'inherit' }}
+      overflow={{ base: 'hidden' }}
     >
       <svg class="svg" xmlns="http://www.w3.org/2000/svg">
         <path

@@ -1,13 +1,10 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
-import { useEffect, useState } from 'react';
-import AnimatedLetters from '../../AnimatedLetters';
-import Logo from '../../Logo';
 import Loader from 'react-loaders';
 import { Box, Grid, GridItem, Text, useTheme } from '@chakra-ui/react';
-import HomeAnimation from '../../HomePicture';
-import CodeBrackets from '../../CodeBrackets';
 import HomeHeadingText from '../../HomeHeadingText';
+import HomePicture from '../../HomePicture';
+import CodeBrackets from '../../CodeBrackets';
 
 const Home = () => {
   const theme = useTheme();
@@ -28,7 +25,9 @@ const Home = () => {
           zIndex={999999}
         >
           <HomeHeadingText />
-          <Text as="h2">Fullstack JavaScript Developer</Text>
+          <Text marginTop={'10px'} as="h2">
+            Fullstack JavaScript Developer
+          </Text>
           <Link to="/contact" className="flat-button">
             CONTACT ME
           </Link>
@@ -40,8 +39,10 @@ const Home = () => {
           width={'100%'}
           height={{ base: '80vh', lg: '100%' }}
           justifyContent={{ base: 'center', lg: 'unset' }}
+          className={'image-zone'}
         >
-          <HomeAnimation />
+          <CodeBrackets />
+          <HomePicture />
         </GridItem>
       </Grid>
       <Loader type="pacman" />

@@ -30,8 +30,8 @@ const theme = extendTheme({
   colors: {
     primaryColorDark: '#ffd700',
     primaryColorLight: '#416788',
-    secondaryColorDark: '4d148c',
-    secondaryColorLight: '4d148c',
+    secondaryColorDark: '#4d148c',
+    secondaryColorLight: '#4d148c',
     altColorLight: '#ff6600',
     backgroundLight: '#ebf0fa',
     backgroundDark: '#022c43',

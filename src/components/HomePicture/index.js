@@ -5,7 +5,7 @@ import { Box, Image } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import CodeBrackets from '../CodeBrackets';
 
-const HomeAnimation = () => {
+const HomePicture = () => {
   const animationRef = useRef();
 
   useEffect(() => {
@@ -53,9 +53,8 @@ const HomeAnimation = () => {
         </defs>
       </motion.svg>
       <Image className="svg-image" src={Eu} width={'400px'} height={'400px'} />
-      {/* <CodeBrackets /> */}
     </Box>
   );
 };
 
-export default HomeAnimation;
+export default HomePicture;
