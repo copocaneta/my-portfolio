@@ -8,6 +8,8 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
+  Grid,
+  GridItem,
   IconButton,
   Input,
   useDisclosure,
@@ -15,6 +17,14 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 import { useRef } from 'react';
+import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faEnvelope,
+  faHome,
+  faSuitcase,
+  faUser,
+} from '@fortawesome/free-solid-svg-icons';
 
 const ResponsiveMenu = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -49,23 +59,52 @@ const ResponsiveMenu = () => {
       >
         <DrawerOverlay background={'transparent'} />
         <DrawerContent
-          h={'74px'}
+          h={'54px'}
           mt={'90px'}
           background={theme.colors.navBarBgLight}
         >
           <DrawerCloseButton />
-          <DrawerHeader>Create your account</DrawerHeader>
-
           <DrawerBody>
-            <Input placeholder="Type here..." />
+            <nav>
+              <Grid templateColumns={'1fr 1fr 1fr 1fr'} fontSize={'27px'}>
+                <GridItem>
+                  <NavLink exact="true" activeclassname="active" to="/">
+                    <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
+                  </NavLink>
+                </GridItem>
+                <GridItem>
+                  <NavLink
+                    exact="true"
+                    activeclassname="active"
+                    className="about-link"
+                    to="/about"
+                  >
+                    <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
+                  </NavLink>
+                </GridItem>
+                <GridItem>
+                  <NavLink
+                    exact="true"
+                    activeclassname="active"
+                    className="portfolio-link"
+                    to="/portfolio"
+                  >
+                    <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
+                  </NavLink>
+                </GridItem>
+                <GridItem>
+                  <NavLink
+                    exact="true"
+                    activeclassname="active"
+                    className="contact-link"
+                    to="/contact"
+                  >
+                    <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
+                  </NavLink>
+                </GridItem>
+              </Grid>
+            </nav>
           </DrawerBody>
-
-          <DrawerFooter>
-            <Button variant="outline" mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme="blue">Save</Button>
-          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </Box>
