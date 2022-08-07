@@ -5,20 +5,21 @@ const PageLoader = () => {
   const loaderVariants = {
     initial: {
       opacity: 0,
-      x: '-200vw',
+      x: '-100vw',
     },
     in: {
-      opacity: 1,
-      x: '-50vw',
+      opacity: [1, 1, 1, 1, 0],
+      x: ['-100vw', '-50vw', '-50vw', '-50vw', '200vw'],
     },
     out: {
-      opacity: [1, 0],
-      x: ['-100vw'],
+      x: '100vw',
+      opacity: 0,
     },
   };
   const loaderTransition = {
     type: 'tween',
     ease: 'easeIn',
+    // x: { delay: 4 },
   };
   return (
     <motion.div
