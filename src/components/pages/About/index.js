@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import Loader from 'react-loaders';
 import AnimatedLetters from '../../AnimatedLetters';
+import PageLoader from '../../PageLoader';
 import './index.scss';
 
 const About = () => {
@@ -92,7 +93,7 @@ const About = () => {
         </GridItem>
       </Grid>
 
-      <Loader type="pacman" />
+      <PageLoader />
     </Box>
   );
 };

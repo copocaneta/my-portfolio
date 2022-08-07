@@ -48,7 +48,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
   <ChakraProvider theme={theme}>
-    <Container maxW={'100%'} width={'100%'} height={'100vh'} m={0} p={0}>
+    <Container
+      maxW={'100%'}
+      width={'100%'}
+      height={'100vh'}
+      m={0}
+      p={0}
+      overflow={'hidden'}
+    >
       <BrowserRouter>
         <App />
       </BrowserRouter>

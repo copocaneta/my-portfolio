@@ -5,6 +5,7 @@ import emailjs from '@emailjs/browser';
 import './index.scss';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import PageLoader from '../../PageLoader';
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -195,7 +196,7 @@ const Contact = () => {
           </MapContainer>
         </div>
       </div>
-      <Loader type="pacman" />
+      <PageLoader />
     </>
   );
 };

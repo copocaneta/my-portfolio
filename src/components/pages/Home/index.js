@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
-import Loader from 'react-loaders';
 import { Box, Grid, GridItem, Text, useTheme } from '@chakra-ui/react';
 import HomeHeadingText from '../../HomeHeadingText';
 import HomePicture from '../../HomePicture';
 import CodeBrackets from '../../CodeBrackets';
+import PageLoader from '../../PageLoader';
 
 const Home = () => {
   const theme = useTheme();
@@ -45,7 +45,7 @@ const Home = () => {
           <HomePicture />
         </GridItem>
       </Grid>
-      <Loader type="pacman" />
+      <PageLoader />
     </Box>
   );
 };

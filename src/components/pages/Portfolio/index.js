@@ -2,6 +2,7 @@ import Loader from 'react-loaders';
 import './index.scss';
 import AnimatedLetters from '../../AnimatedLetters';
 import { useState } from 'react';
+import PageLoader from '../../PageLoader';
 
 const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -16,7 +17,7 @@ const Portfolio = () => {
           />
         </h1>
       </div>
-      <Loader type="pacman" />
+      <PageLoader />
     </>
   );
 };
