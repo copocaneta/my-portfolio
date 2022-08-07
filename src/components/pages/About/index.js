@@ -4,13 +4,14 @@ import {
   faCss3,
   faGitAlt,
   faHtml5,
-  faJs,
   faJsSquare,
   faReact,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Loader from 'react-loaders';
+import { pageTransition, pageVariants } from '../../../utils/page-transition';
 import AnimatedLetters from '../../AnimatedLetters';
 import PageLoader from '../../PageLoader';
 import './index.scss';
@@ -26,6 +27,11 @@ const About = () => {
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Grid
+        as={motion.div}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="out"
         className="container about-page"
         templateColumns={'1fr 1fr'}
         w={'100%'}
