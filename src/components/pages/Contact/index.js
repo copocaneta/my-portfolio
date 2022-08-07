@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
-import Loader from 'react-loaders';
 import AnimatedLetters from '../../AnimatedLetters';
 import emailjs from '@emailjs/browser';
 import './index.scss';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import PageLoader from '../../PageLoader';
+import { Box, Grid, GridItem } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
+import { pageVariants } from '../../../utils/page-transition';
 
 const Contact = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -28,10 +30,6 @@ const Contact = () => {
     subject: '',
     message: '',
   });
-
-  // const testCaptcha = (captchaValue) => {
-  //   console.log(`captchaValue ${captchaValue}`);
-  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,55 +61,26 @@ const Contact = () => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
-  // const sendEmail = (e) => {
-  //   e.preventDefault();
-
-  //   // console.log('teste', process.env.REACT_APP_EMAIL_JS_USER);
-
-  //   console.log('test34', )
-
-  //   emailjs
-  //     .sendForm(
-
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //       }
-  //     );
-
-  //   // emailjs
-  //   //   .send(
-  //   //     ,
-  //   //     ,
-  //   //     values,
-  //   //
-  //   //   )
-  //   //   .then(
-  //   //     (result) => {
-  //   //       alert(result.text);
-  //   //       window.location.reload(false);
-  //   //     },
-  //   //     (error) => {
-  //   //       alert(error.text);
-  //   //     }
-  //   //   );
-  // };
-
-  // const handleChange = (e) => {
-  //   setValues((values) => ({
-  //     ...values,
-  //     [e.target.name]: e.target.value,
-  //   }));
-  // };
-
   return (
-    <>
-      <div className="container contact-page">
-        <div className="text-zone">
+    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
+      <Grid
+        as={motion.div}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="out"
+        templateColumns={'1fr 53%'}
+        w={'100%'}
+        mx={'50px'}
+        className="container contact-page"
+      >
+        <GridItem
+          className="text-zone"
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+          paddingRight={'3em'}
+        >
           <h1>
             <AnimatedLetters
               letterClass={letterClass}
@@ -176,28 +145,30 @@ const Contact = () => {
               />
             </form>
           </div>
-        </div>
-        <div className="info-map">
-          Thiago Bernardi,
-          <br />
-          São Paulo, SP <br />
-          Brasil
-          <br />
-        </div>
-        <div className="map-wrap">
-          <MapContainer
-            center={[-23.548059243667304, -46.63453909542767]}
-            zoom={3}
-          >
-            <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-            <Marker position={[-23.548059243667304, -46.63453909542767]}>
-              <Popup>Thiago Bernardi</Popup>
-            </Marker>
-          </MapContainer>
-        </div>
-      </div>
+        </GridItem>
+        <GridItem>
+          <div className="info-map">
+            Thiago Bernardi,
+            <br />
+            São Paulo, SP <br />
+            Brasil
+            <br />
+          </div>
+          <div className="map-wrap">
+            <MapContainer
+              center={[-23.548059243667304, -46.63453909542767]}
+              zoom={3}
+            >
+              <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+              <Marker position={[-23.548059243667304, -46.63453909542767]}>
+                <Popup>Thiago Bernardi</Popup>
+              </Marker>
+            </MapContainer>
+          </div>
+        </GridItem>
+      </Grid>
       <PageLoader />
-    </>
+    </Box>
   );
 };
 
