@@ -1,28 +1,17 @@
 import Loader from 'react-loaders';
 import { motion } from 'framer-motion';
+import { loaderVariants, loaderTransition } from '../../utils/page-transition';
+import { Box, useTheme } from '@chakra-ui/react';
 
 const PageLoader = () => {
-  const loaderVariants = {
-    initial: {
-      opacity: 0,
-      x: '-100vw',
-    },
-    in: {
-      opacity: [1, 1, 1, 1, 0],
-      x: ['-100vw', '-50vw', '-50vw', '-50vw', '200vw'],
-    },
-    out: {
-      x: '100vw',
-      opacity: 0,
-    },
-  };
-  const loaderTransition = {
-    type: 'tween',
-    ease: 'easeIn',
-    // x: { delay: 4 },
-  };
+  const theme = useTheme();
   return (
-    <motion.div
+    <Box
+      as={motion.div}
+      // w={'100vw'}
+      // h={'100vh'}
+      // position={'absolute'}
+      background={theme.colors.backgroundLight}
       initial="initial"
       animate="in"
       exit="out"
@@ -30,7 +19,7 @@ const PageLoader = () => {
       transition={loaderTransition}
     >
       <Loader type="pacman" />
-    </motion.div>
+    </Box>
   );
 };
 
