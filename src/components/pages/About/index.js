@@ -33,7 +33,7 @@ const About = () => {
         animate="animate"
         exit="out"
         className="container about-page"
-        templateColumns={'1fr 1fr'}
+        templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
         w={'100%'}
         mx={'50px'}
       >
