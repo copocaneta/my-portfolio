@@ -15,24 +15,7 @@ import {
   faLinkedin,
   faStackOverflow,
 } from '@fortawesome/free-brands-svg-icons';
-import {
-  Box,
-  Button,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerOverlay,
-  GridItem,
-  Image,
-  Input,
-  Link,
-  useDisclosure,
-  useTheme,
-} from '@chakra-ui/react';
-import { useRef } from 'react';
+import { Box, GridItem, Image, Link, useTheme } from '@chakra-ui/react';
 import ResponsiveMenu from '../ResponsiveMenu';
 
 const Sidebar = () => {
