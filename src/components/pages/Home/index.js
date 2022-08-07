@@ -5,13 +5,18 @@ import HomeHeadingText from '../../HomeHeadingText';
 import HomePicture from '../../HomePicture';
 import CodeBrackets from '../../CodeBrackets';
 import PageLoader from '../../PageLoader';
+import { motion } from 'framer-motion';
+import { pageTransition, pageVariants } from '../../../utils/page-transition';
 
 const Home = () => {
-  const theme = useTheme();
-
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Grid
+        as={motion.div}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="out"
         className="container home-page"
         templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
         w={'100%'}
