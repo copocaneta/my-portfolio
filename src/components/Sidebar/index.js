@@ -1,6 +1,6 @@
 import { Link as ReactLink, NavLink } from 'react-router-dom';
 import './index.scss';
-import LogoTb from '../../assets/images/logo-tb2.png';
+import Logo from '../../assets/images/logo.svg';
 import LogoSubtitle from '../../assets/images/logo-sub.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -35,12 +35,13 @@ const Sidebar = () => {
     >
       {/* Logo */}
       <Link as={ReactLink} className="logo" to="/" padding={'8px 0'}>
-        <Image src={LogoTb} alt="logo" />
         <Image
-          className="sub-logo"
-          src={LogoSubtitle}
-          alt="Thiago Bernardi"
-          w={'50px'}
+          display={'block'}
+          margin={{ base: '8px 15px', lg: '8px auto' }}
+          width={'54px'}
+          height={'auto'}
+          src={Logo}
+          alt="logo"
         />
       </Link>
       {/* Responsive Menu */}

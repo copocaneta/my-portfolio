@@ -1,17 +1,14 @@
 import {
   Box,
-  Button,
   Drawer,
   DrawerBody,
   DrawerCloseButton,
   DrawerContent,
-  DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   Grid,
   GridItem,
   IconButton,
-  Input,
+  Link,
   useDisclosure,
   useTheme,
 } from '@chakra-ui/react';
@@ -40,8 +37,8 @@ const ResponsiveMenu = () => {
         onClick={onOpen}
         backgroundColor={'transparent'}
         fontSize={'32'}
-        mt={'20px'}
-        mr={'20px'}
+        mt={'30px'}
+        mr={'30px'}
         _active={{ background: 'transparent' }}
         _focus={{ background: 'transparent' }}
       />
@@ -65,42 +62,54 @@ const ResponsiveMenu = () => {
         >
           <DrawerCloseButton />
           <DrawerBody>
-            <nav>
+            <nav className={'responsive-menu'}>
               <Grid templateColumns={'1fr 1fr 1fr 1fr'} fontSize={'27px'}>
                 <GridItem>
-                  <NavLink exact="true" activeclassname="active" to="/">
-                    <FontAwesomeIcon icon={faHome} color="#4d4d4e" />
-                  </NavLink>
+                  <Link
+                    as={NavLink}
+                    _activeLink={{ svg: { color: theme.colors.altColorLight } }}
+                    exact="true"
+                    // activeclassname="active"
+                    to="/"
+                  >
+                    <FontAwesomeIcon icon={faHome} color={'white'} />
+                  </Link>
                 </GridItem>
                 <GridItem>
-                  <NavLink
+                  <Link
+                    as={NavLink}
+                    _activeLink={{ svg: { color: theme.colors.altColorLight } }}
                     exact="true"
                     activeclassname="active"
                     className="about-link"
                     to="/about"
                   >
-                    <FontAwesomeIcon icon={faUser} color="#4d4d4e" />
-                  </NavLink>
+                    <FontAwesomeIcon icon={faUser} color={'white'} />
+                  </Link>
                 </GridItem>
                 <GridItem>
-                  <NavLink
+                  <Link
+                    as={NavLink}
+                    _activeLink={{ svg: { color: theme.colors.altColorLight } }}
                     exact="true"
                     activeclassname="active"
                     className="portfolio-link"
                     to="/portfolio"
                   >
-                    <FontAwesomeIcon icon={faSuitcase} color="#4d4d4e" />
-                  </NavLink>
+                    <FontAwesomeIcon icon={faSuitcase} color={'white'} />
+                  </Link>
                 </GridItem>
                 <GridItem>
-                  <NavLink
+                  <Link
+                    as={NavLink}
+                    _activeLink={{ svg: { color: theme.colors.altColorLight } }}
                     exact="true"
                     activeclassname="active"
                     className="contact-link"
                     to="/contact"
                   >
-                    <FontAwesomeIcon icon={faEnvelope} color="#4d4d4e" />
-                  </NavLink>
+                    <FontAwesomeIcon icon={faEnvelope} color={'white'} />
+                  </Link>
                 </GridItem>
               </Grid>
             </nav>
