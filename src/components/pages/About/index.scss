@@ -1,12 +1,12 @@
 @import '../../../variables.scss';
 .stage-cube-cont {
-  width: 50%;
+  //   width: 50%;
   height: 100%;
-  top: 0;
-  padding-top: 18%;
-  margin-left: 0;
-  position: relative;
-  right: 0;
+  //   top: 0;
+  //   padding-top: 18%;
+  //   margin-left: 0;
+  //   position: relative;
+  //   right: 0;
   overflow: hidden;
 }
 
@@ -17,7 +17,6 @@
   animation-duration: 12s;
   transform-style: preserve-3d;
   transform-origin: 100px 100px 0;
-  margin-left: calc(50% - 100px);
 
   div {
     position: absolute;
