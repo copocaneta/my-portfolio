@@ -5,7 +5,7 @@ import './index.scss';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
 import PageLoader from '../../PageLoader';
-import { Box, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Grid, GridItem, useTheme } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
 
@@ -61,6 +61,8 @@ const Contact = () => {
     setToSend({ ...toSend, [e.target.name]: e.target.value });
   };
 
+  const theme = useTheme();
+
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Grid
@@ -69,7 +71,8 @@ const Contact = () => {
         initial="initial"
         animate="animate"
         exit="out"
-        templateColumns={'1fr 53%'}
+        templateColumns={{ base: '1fr', lg: '1fr 53%' }}
+        templateRows={{ base: '1fr 1fr', lg: '1fr auto' }}
         w={'100%'}
         mx={'50px'}
         className="container contact-page"
@@ -147,13 +150,31 @@ const Contact = () => {
           </div>
         </GridItem>
         <GridItem>
-          <div className="info-map">
+          <Box
+            as={'div'}
+            position={{ base: 'initial', lg: 'absolute' }}
+            top={{ base: 'unset', lg: '50px' }}
+            right={{ base: 'unset', lg: '30%' }}
+            zIndex={{ base: 'unset', lg: '999999' }}
+            width={{ base: 'unset', lg: '267px' }}
+            padding={'20px'}
+            marginY={{ base: '20px', lg: 'unset' }}
+            // opacity={1}
+            animation={'fadeIn 1s 1.5s;'}
+            // animationF
+            color={'white'}
+            fontFamily={'Helvetica'}
+            fontSize={'17px'}
+            fontWeight={'300'}
+            background={theme.colors.primaryColorLight}
+            className="info-map"
+          >
             Thiago Bernardi,
             <br />
             São Paulo, SP <br />
             Brasil
             <br />
-          </div>
+          </Box>
           <div className="map-wrap">
             <MapContainer
               center={[-23.548059243667304, -46.63453909542767]}
