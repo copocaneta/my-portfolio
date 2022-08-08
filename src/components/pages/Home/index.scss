@@ -1,21 +1,9 @@
-@import '../../variables.scss';
+@import '../../../variables.scss';
 
 .home-page {
-  .text-zone {
-    position: absolute;
-    left: 10%;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40%;
-    max-height: 90%;
-  }
-
   h1 {
-    color: $heading-color-light;
-    font-size: 53px;
-    margin: 0;
     font-family: 'Coolvetica';
-    font-weight: 400;
+    font-weight: 200;
     &::before {
       content: '<h1>';
       font-family: 'La Belle Aurore';
@@ -44,9 +32,11 @@
       animation-delay: 1.4s;
       &.letter-t {
         margin-right: -35px;
+        display: inline-block;
       }
       &.letter-b {
         margin-left: 10px;
+        display: inline-block;
       }
     }
   }
@@ -72,9 +62,9 @@ h2 {
   padding: 10px 18px;
   border: 1px solid $primary-color-light;
   margin-top: 25px;
-  float: left;
   animation: fadeIn 1s 1.8s backwards;
   white-space: nowrap;
+  align-self: flex-start;
 
   &:hover {
     background: $alt-color-light;

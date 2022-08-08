@@ -1,0 +1,7 @@
+@import '../../variables.scss';
+.Typewriter__wrapper {
+  &:hover {
+    animation: rubberBand 1s;
+    color: $alt-color-light;
+  }
+}
