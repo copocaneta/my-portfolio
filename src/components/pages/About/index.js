@@ -1,16 +1,19 @@
+import { Box, Grid, GridItem } from '@chakra-ui/react';
 import {
   faAngular,
   faCss3,
   faGitAlt,
   faHtml5,
-  faJs,
   faJsSquare,
   faReact,
 } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import Loader from 'react-loaders';
-import AnimatedLetters from '../AnimatedLetters';
+import { pageTransition, pageVariants } from '../../../utils/page-transition';
+import AnimatedLetters from '../../AnimatedLetters';
+import PageLoader from '../../PageLoader';
 import './index.scss';
 
 const About = () => {
@@ -22,9 +25,25 @@ const About = () => {
     }, 3000);
   }, []);
   return (
-    <>
-      <div className="container about-page">
-        <div className="text-zone">
+    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
+      <Grid
+        as={motion.div}
+        variants={pageVariants}
+        initial="initial"
+        animate="animate"
+        exit="out"
+        className="container about-page"
+        templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
+        templateRows={{ base: '1fr 400px', lg: 'auto' }}
+        w={'100%'}
+        mx={'50px'}
+      >
+        <GridItem
+          className="text-zone"
+          display={'flex'}
+          flexDirection={'column'}
+          justifyContent={'center'}
+        >
           <h1>
             <AnimatedLetters
               letterClass={letterClass}
@@ -38,14 +57,14 @@ const About = () => {
             frontend development since 2001, I've started with simple HTML and
             CSS then moved to ASP 1.0 and then to PHP. I've also programmed on
             Python doing backend and automation tasks mostly for the web hosting
-            industry.{' '}
+            industry.
           </p>
           <p>
             I also have experience with Django and Flask (Python frameworks) but
             my passion is for JavaScript and this is where i thrive and
             concentrate the latest years of my web development career. I've been
             programming on NodeJS for Rest APIs using Express, NestJS or
-            sometimes frameworks like Strapi or Sanity.{' '}
+            sometimes frameworks like Strapi or Sanity.
           </p>
           <p>
             On the frontend I've been using React and its frameworks such as
@@ -54,11 +73,22 @@ const About = () => {
             (Jest and React Testing Library). Lately I've been working a lot
             with Web3, joining JavaScript with blockchains dapps by using
             libraries such as Moralis and Alchemy. I've helped them build
-            several projects that innovated the Web3 scene.{' '}
+            several projects that innovated the Web3 scene.
           </p>
-        </div>
-        <div className="stage-cube-cont">
-          <div className="cubespinner">
+        </GridItem>
+        <GridItem
+          className="stage-cube-cont"
+          display={'flex'}
+          justifyContent={'center'}
+          alignItems={'center'}
+          height={{ base: '400px', lg: 'auto' }}
+        >
+          <Box
+            as={'div'}
+            marginTop={{ base: '-75%', lg: '-25%' }}
+            marginLeft={{ base: '-75%', lg: '-25%' }}
+            className="cubespinner"
+          >
             <div className="face1">
               <FontAwesomeIcon icon={faAngular} color="#dd0031" />
             </div>
@@ -77,12 +107,12 @@ const About = () => {
             <div className="face6">
               <FontAwesomeIcon icon={faGitAlt} color="#EC4D28" />
             </div>
-          </div>
-        </div>
-      </div>
+          </Box>
+        </GridItem>
+      </Grid>
 
-      <Loader type="pacman" />
-    </>
+      <PageLoader />
+    </Box>
   );
 };
 
