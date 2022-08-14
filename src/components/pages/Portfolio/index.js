@@ -11,6 +11,11 @@ import {
   GridItem,
   HStack,
   Image,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
   Tag,
   Text,
   useTheme,
@@ -22,10 +27,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { Link } from '@chakra-ui/react';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
+import { portfolioMockData } from './mock-data';
 
 const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
   const theme = useTheme();
+
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Grid
@@ -52,92 +59,57 @@ const Portfolio = () => {
               letterClass={letterClass}
             />
           </h1>
-          <p>
+          <Text as={'p'}>
             This is where I will list some of my most recent work. Not
             everything I did will be here since most is under confidential
             agreements with the companies I work.
-          </p>
-          <Grid templateColumns={'1fr 420px'} marginY={'40px'} gap={4}>
-            <GridItem>
-              <AspectRatio ratio={16 / 9}>
-                <Image src={EqualizerPortfolioImg} />
-              </AspectRatio>
-            </GridItem>
-            <GridItem
-              display={'flex'}
-              flexDir={'column'}
-              gap={'20px'}
-              fontSize={'20px'}
-            >
-              <Flex flexDir={'column'} gap={'5px'}>
-                <Text color={theme.colors.textColorLight} fontSize={'0.6em'}>
-                  Frotend Project
-                </Text>
-                <Text color={theme.colors.textColorLight} fontSize={'1.2em'}>
-                  Equalizer landing page
-                </Text>
-              </Flex>
-              <Box
-                display={'flex'}
-                flexDirection={'column'}
-                gap={'5px'}
-                background={theme.colors.altColorLight}
-                padding={8}
-              >
-                <Text
-                  as={'span'}
-                  fontSize={'0.8em'}
-                  fontWeight={400}
-                  color={'white'}
-                  textAlign={'right'}
+          </Text>
+          <Box mt={'50px'} border={'1px solid #ddd'} rounded={30} padding={5}>
+            <Tabs isFitted variant="soft-rounded">
+              <TabList mb="1em">
+                <Tab
+                  _selected={{
+                    color: 'white',
+                    bg: theme.colors.altColorLight,
+                  }}
                 >
-                  A minimal landing page for a system audio equalizer app
-                  specifically designed for Android and iOS.
-                </Text>
-              </Box>
-              <HStack spacing={4}>
-                <Tag
-                  size={'md'}
-                  variant="solid"
-                  background={theme.colors.secondaryColorLight}
+                  <Text as="span" fontSize="2xl">
+                    🛠 Frontend
+                  </Text>
+                </Tab>
+                <Tab
+                  _selected={{ color: 'white', bg: theme.colors.altColorLight }}
                 >
-                  HTML
-                </Tag>
-                <Tag
-                  size={'md'}
-                  variant="solid"
-                  background={theme.colors.secondaryColorLight}
-                >
-                  CSS Grid
-                </Tag>
-                <Tag
-                  size={'md'}
-                  variant="solid"
-                  background={theme.colors.secondaryColorLight}
-                >
-                  Flex
-                </Tag>
-              </HStack>
-              <HStack>
-                <Link
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://github.com/copocaneta/frontend-projects/tree/main/equalizer-landing-page"
-                  isExternal
-                >
-                  <FontAwesomeIcon icon={faGithub} color="#4d4d4e" />
-                </Link>
-                <Link
-                  target="_blank"
-                  rel="noreferrer"
-                  href="https://copocaneta.github.io/frontend-projects/equalizer-landing-page/"
-                  isExternal
-                >
-                  <FontAwesomeIcon icon={faLink} color="#4d4d4e" />
-                </Link>
-              </HStack>
-            </GridItem>
-          </Grid>
+                  <Text as="span" fontSize="2xl">
+                    🧰 Backend
+                  </Text>
+                </Tab>
+              </TabList>
+              <TabPanels>
+                <TabPanel>
+                  <Box>
+                    <Grid
+                      gap={3}
+                      templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
+                    >
+                      {portfolioMockData.frontend.map((item) => {
+                        return (
+                          <GridItem>
+                            <Box border="1px solid #ccc" borderTop={30}>
+                              <Image src={item.image} />
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </Box>
+                </TabPanel>
+                <TabPanel>
+                  <p>two!</p>
+                </TabPanel>
+              </TabPanels>
+            </Tabs>
+          </Box>
         </GridItem>
       </Grid>
       <PageLoader />
