@@ -6,18 +6,28 @@ import PageLoader from '../../PageLoader';
 import {
   AspectRatio,
   Box,
-  Flex,
+  Button,
   Grid,
   GridItem,
   HStack,
   Image,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
   Tab,
   TabList,
   TabPanel,
   TabPanels,
   Tabs,
   Tag,
+  TagLabel,
+  TagLeftIcon,
   Text,
+  useDisclosure,
   useTheme,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
@@ -28,10 +38,13 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { Link } from '@chakra-ui/react';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { portfolioMockData } from './mock-data';
+import { AddIcon } from '@chakra-ui/icons';
 
 const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
   const theme = useTheme();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [modalData, setModalData] = useState(null);
 
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
@@ -64,7 +77,7 @@ const Portfolio = () => {
             everything I did will be here since most is under confidential
             agreements with the companies I work.
           </Text>
-          <Box mt={'50px'} border={'1px solid #ddd'} rounded={30} padding={5}>
+          <Box my={'50px'} border={'1px solid #ddd'} rounded={30} padding={5}>
             <Tabs isFitted variant="soft-rounded">
               <TabList mb="1em">
                 <Tab
@@ -89,14 +102,39 @@ const Portfolio = () => {
                 <TabPanel>
                   <Box>
                     <Grid
-                      gap={3}
+                      gap={10}
                       templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
                     >
-                      {portfolioMockData.frontend.map((item) => {
+                      {portfolioMockData.frontend.map((item, idx) => {
                         return (
-                          <GridItem>
-                            <Box border="1px solid #ccc" borderTop={30}>
-                              <Image src={item.image} />
+                          <GridItem key={idx}>
+                            <Box border="1px solid #ccc" rounded={30}>
+                              <AspectRatio ratio={16 / 9}>
+                                <Image
+                                  onClick={() => {
+                                    onOpen();
+                                    setModalData(item);
+                                  }}
+                                  roundedTop={30}
+                                  src={require(`../../../assets/images/${item.image}`)}
+                                />
+                              </AspectRatio>
+                              <Box mt={'11px'} mx={'15px'}>
+                                <Text as="span" color="black">
+                                  <strong>{item.name}</strong>
+                                </Text>
+                                <HStack my={4} spacing={4}>
+                                  {item.tags.map((tag) => (
+                                    <Tag size={'lg'} key={tag} variant="subtle">
+                                      <TagLeftIcon
+                                        boxSize="12px"
+                                        as={AddIcon}
+                                      />
+                                      <TagLabel>{tag}</TagLabel>
+                                    </Tag>
+                                  ))}
+                                </HStack>
+                              </Box>
                             </Box>
                           </GridItem>
                         );
@@ -105,13 +143,74 @@ const Portfolio = () => {
                   </Box>
                 </TabPanel>
                 <TabPanel>
-                  <p>two!</p>
+                  <Box>
+                    <Grid
+                      gap={10}
+                      templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
+                    >
+                      {portfolioMockData.backend.map((item, idx) => {
+                        return (
+                          <GridItem key={idx}>
+                            <Box border="1px solid #ccc" rounded={30}>
+                              <Image
+                                onClick={() => {
+                                  onOpen();
+                                  setModalData(item);
+                                }}
+                                roundedTop={30}
+                                src={require(`../../../assets/images/${item.image}`)}
+                              />
+                              <Box mt={'11px'} mx={'15px'}>
+                                <Text as="span" color="black">
+                                  <strong>{item.name}</strong>
+                                </Text>
+                                <HStack my={4} spacing={4}>
+                                  {item.tags.map((tag) => (
+                                    <Tag size={'lg'} key={tag} variant="subtle">
+                                      <TagLeftIcon
+                                        boxSize="12px"
+                                        as={AddIcon}
+                                      />
+                                      <TagLabel>{tag}</TagLabel>
+                                    </Tag>
+                                  ))}
+                                </HStack>
+                              </Box>
+                            </Box>
+                          </GridItem>
+                        );
+                      })}
+                    </Grid>
+                  </Box>
                 </TabPanel>
               </TabPanels>
             </Tabs>
           </Box>
         </GridItem>
       </Grid>
+      <Modal isOpen={isOpen} onClose={onClose} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>
+            <Text as="span" color="black">
+              {modalData?.name}
+            </Text>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Text as="span" color="black">
+              {modalData?.description}
+            </Text>
+          </ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button variant="ghost">Secondary Action</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
       <PageLoader />
     </Box>
   );
