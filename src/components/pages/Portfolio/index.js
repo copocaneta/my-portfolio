@@ -110,14 +110,23 @@ const Portfolio = () => {
                           <GridItem key={idx}>
                             <Box border="1px solid #ccc" rounded={30}>
                               <AspectRatio ratio={16 / 9}>
-                                <Image
+                                <Button
+                                  roundedTop={30}
+                                  p={0}
                                   onClick={() => {
                                     onOpen();
                                     setModalData(item);
                                   }}
-                                  roundedTop={30}
-                                  src={require(`../../../assets/images/${item.image}`)}
-                                />
+                                >
+                                  <Image
+                                    onClick={() => {
+                                      onOpen();
+                                      setModalData(item);
+                                    }}
+                                    roundedTop={30}
+                                    src={require(`../../../assets/images/${item.image}`)}
+                                  />
+                                </Button>
                               </AspectRatio>
                               <Box mt={'11px'} mx={'15px'}>
                                 <Text as="span" color="black">
@@ -152,14 +161,22 @@ const Portfolio = () => {
                         return (
                           <GridItem key={idx}>
                             <Box border="1px solid #ccc" rounded={30}>
-                              <Image
-                                onClick={() => {
-                                  onOpen();
-                                  setModalData(item);
-                                }}
-                                roundedTop={30}
-                                src={require(`../../../assets/images/${item.image}`)}
-                              />
+                              <AspectRatio ratio={16 / 9}>
+                                <Button
+                                  roundedTop={30}
+                                  p={0}
+                                  onClick={() => {
+                                    onOpen();
+                                    setModalData(item);
+                                  }}
+                                >
+                                  <Image
+                                    roundedTop={30}
+                                    src={require(`../../../assets/images/${item.image}`)}
+                                  />
+                                </Button>
+                              </AspectRatio>
+
                               <Box mt={'11px'} mx={'15px'}>
                                 <Text as="span" color="black">
                                   <strong>{item.name}</strong>
