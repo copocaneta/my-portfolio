@@ -11,6 +11,7 @@ import {
   GridItem,
   HStack,
   Image,
+  keyframes,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -27,6 +28,7 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
+  transition,
   useDisclosure,
   useTheme,
 } from '@chakra-ui/react';
@@ -77,8 +79,21 @@ const Portfolio = () => {
             everything I did will be here since most is under confidential
             agreements with the companies I work.
           </Text>
-          <Box my={'50px'} border={'1px solid #ddd'} rounded={30} padding={5}>
-            <Tabs isFitted variant="soft-rounded">
+          <Box
+            as={motion.div}
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+              transition: { delay: 1.5, duration: 2 },
+            }}
+            my={'50px'}
+            border={'1px solid #ddd'}
+            rounded={30}
+            padding={5}
+          >
+            <Tabs isLazy={true} isFitted variant="soft-rounded">
               <TabList mb="1em">
                 <Tab
                   _selected={{
@@ -106,9 +121,25 @@ const Portfolio = () => {
                       templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
                     >
                       {portfolioMockData.frontend.map((item, idx) => {
+                        console.log();
                         return (
                           <GridItem key={idx}>
-                            <Box border="1px solid #ccc" rounded={30}>
+                            <Box
+                              as={motion.div}
+                              border="1px solid #ccc"
+                              rounded={30}
+                              initial={{
+                                scale: 0,
+                              }}
+                              animate={{
+                                scale: 1.0,
+                                transition: { delay: 0.1 * idx },
+                              }}
+                              // transition={{
+                              //   delay: 0.1 * idx,
+                              //   duration: 20,
+                              // }}
+                            >
                               <AspectRatio ratio={16 / 9}>
                                 <Button
                                   roundedTop={30}
@@ -160,7 +191,18 @@ const Portfolio = () => {
                       {portfolioMockData.backend.map((item, idx) => {
                         return (
                           <GridItem key={idx}>
-                            <Box border="1px solid #ccc" rounded={30}>
+                            <Box
+                              as={motion.div}
+                              border="1px solid #ccc"
+                              rounded={30}
+                              initial={{
+                                scale: 0,
+                              }}
+                              animate={{
+                                scale: 1.0,
+                                transition: { delay: 0.1 * idx },
+                              }}
+                            >
                               <AspectRatio ratio={16 / 9}>
                                 <Button
                                   roundedTop={30}
