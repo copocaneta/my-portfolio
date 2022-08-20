@@ -86,7 +86,7 @@ const Portfolio = () => {
             }}
             animate={{
               opacity: 1,
-              transition: { delay: 1.5, duration: 2 },
+              transition: { delay: 1.5, duration: 2.5 },
             }}
             my={'50px'}
             border={'1px solid #ddd'}
