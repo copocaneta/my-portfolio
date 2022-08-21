@@ -55,7 +55,7 @@ const Portfolio = () => {
     setTimeout(() => {
       startPortAnimation();
       setFirstLoad(false);
-    }, 1600);
+    }, 2000);
   });
 
   return (
@@ -260,8 +260,14 @@ const Portfolio = () => {
           </Box>
         </GridItem>
       </Grid>
-      <Modal isOpen={isOpen} onClose={onClose} isCentered>
-        <ModalOverlay />
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        size={'xl'}
+        rounded={30}
+      >
+        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
           <ModalHeader>
             <Text as="span" color="black">
@@ -270,16 +276,28 @@ const Portfolio = () => {
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text as="span" color="black">
-              {modalData?.description}
-            </Text>
+            <Box>
+              {console.log(modalData?.image)}
+              <AspectRatio ratio={16 / 9} marginBottom={'20px'}>
+                <Image
+                  src={
+                    modalData &&
+                    require(`../../../assets/images/${modalData?.image}`)
+                  }
+                  rounded={30}
+                />
+              </AspectRatio>
+
+              <Text as="span" color="black">
+                {modalData?.description}
+              </Text>
+            </Box>
           </ModalBody>
 
           <ModalFooter>
             <Button colorScheme="blue" mr={3} onClick={onClose}>
               Close
             </Button>
-            <Button variant="ghost">Secondary Action</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
