@@ -59,15 +59,9 @@ h2 {
   letter-spacing: 4px;
   font-family: sans-serif;
   text-decoration: none;
-  padding: 10px 18px;
   border: 1px solid $primary-color-light;
   margin-top: 25px;
   animation: fadeIn 1s 1.8s backwards;
   white-space: nowrap;
   align-self: flex-start;
-
-  &:hover {
-    background: $alt-color-light;
-    color: $text-color-dark;
-  }
 }
