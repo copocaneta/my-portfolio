@@ -34,6 +34,7 @@ import { motion, useAnimationControls } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
 import { portfolioMockData } from './mock-data';
 import { AddIcon } from '@chakra-ui/icons';
+import PortfolioCardItem from './portfiolio-card';
 
 const Portfolio = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -134,61 +135,16 @@ const Portfolio = () => {
                         console.log();
                         return (
                           <GridItem key={idx}>
-                            <Box
-                              as={motion.div}
-                              border="1px solid #ccc"
-                              rounded={30}
-                              initial={{
-                                scale: 0,
-                              }}
-                              // animate={{
-                              //   scale: 1.0,
-                              //   transition: { delay: 0.1 * idx },
-                              // }}
-                              custom={idx}
-                              animate={controls}
-                              onLoad={() => {
-                                if (!firstLoad) {
-                                  startPortAnimation();
-                                }
-                              }}
-                            >
-                              <AspectRatio ratio={16 / 9}>
-                                <Button
-                                  roundedTop={30}
-                                  p={0}
-                                  onClick={() => {
-                                    onOpen();
-                                    setModalData(item);
-                                  }}
-                                >
-                                  <Image
-                                    onClick={() => {
-                                      onOpen();
-                                      setModalData(item);
-                                    }}
-                                    roundedTop={30}
-                                    src={require(`../../../assets/images/${item.image}`)}
-                                  />
-                                </Button>
-                              </AspectRatio>
-                              <Box mt={'11px'} mx={'15px'}>
-                                <Text as="span" color="black">
-                                  <strong>{item.name}</strong>
-                                </Text>
-                                <HStack my={4} spacing={4}>
-                                  {item.tags.map((tag) => (
-                                    <Tag size={'lg'} key={tag} variant="subtle">
-                                      <TagLeftIcon
-                                        boxSize="12px"
-                                        as={AddIcon}
-                                      />
-                                      <TagLabel>{tag}</TagLabel>
-                                    </Tag>
-                                  ))}
-                                </HStack>
-                              </Box>
-                            </Box>
+                            <PortfolioCardItem
+                              orderOnPage={'first'}
+                              item={item}
+                              idx={idx}
+                              controls={controls}
+                              startPortAnimation={startPortAnimation}
+                              firstLoad={firstLoad}
+                              onOpen={onOpen}
+                              setModalData={setModalData}
+                            />
                           </GridItem>
                         );
                       })}
@@ -204,51 +160,16 @@ const Portfolio = () => {
                       {portfolioMockData.backend.map((item, idx) => {
                         return (
                           <GridItem key={idx}>
-                            <Box
-                              as={motion.div}
-                              border="1px solid #ccc"
-                              rounded={30}
-                              initial={{
-                                scale: 0,
-                              }}
-                              animate={{
-                                scale: 1.0,
-                                transition: { delay: 0.1 * idx },
-                              }}
-                            >
-                              <AspectRatio ratio={16 / 9}>
-                                <Button
-                                  roundedTop={30}
-                                  p={0}
-                                  onClick={() => {
-                                    onOpen();
-                                    setModalData(item);
-                                  }}
-                                >
-                                  <Image
-                                    roundedTop={30}
-                                    src={require(`../../../assets/images/${item.image}`)}
-                                  />
-                                </Button>
-                              </AspectRatio>
-
-                              <Box mt={'11px'} mx={'15px'}>
-                                <Text as="span" color="black">
-                                  <strong>{item.name}</strong>
-                                </Text>
-                                <HStack my={4} spacing={4}>
-                                  {item.tags.map((tag) => (
-                                    <Tag size={'lg'} key={tag} variant="subtle">
-                                      <TagLeftIcon
-                                        boxSize="12px"
-                                        as={AddIcon}
-                                      />
-                                      <TagLabel>{tag}</TagLabel>
-                                    </Tag>
-                                  ))}
-                                </HStack>
-                              </Box>
-                            </Box>
+                            <PortfolioCardItem
+                              orderOnPage={'second'}
+                              item={item}
+                              idx={idx}
+                              controls={controls}
+                              startPortAnimation={startPortAnimation}
+                              firstLoad={firstLoad}
+                              onOpen={onOpen}
+                              setModalData={setModalData}
+                            />
                           </GridItem>
                         );
                       })}
