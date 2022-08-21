@@ -18,7 +18,6 @@ $colors: $alt-color-light, $alt-color-light, $primary-color-light,
   position: absolute;
   bottom: -100vh;
   transform-style: preserve-3d;
-  aspect-ratio: 1;
 }
 
 $total: 10;
@@ -29,20 +28,22 @@ $total: 10;
 
   .svg:nth-child(#{$i}) {
     stroke-width: '19px';
-    stroke: #{$nth};
-    fill: #{$nth};
+    // stroke: #{$nth};
+    // fill: #{$nth};
     opacity: 0.4;
-    left: random(120) * 1% - 20;
+    left: random(80) * 1% - 20;
     animation: raise#{$i} 6 + random(150) + s linear infinite;
     animation-delay: random(5) - 5 + s;
-    transform: scale(0.1 * $i - 0.9) rotate(random(5) + deg);
+    // transform: scale(0.1 * $i - 0.9) rotate(random(5) + deg);
+    transform: scale(0.1 * $i);
     z-index: $i - 7;
     filter: blur($i - 6 + px);
 
     @keyframes raise#{$i} {
       to {
         bottom: 150vh;
-        transform: scale(0.1 * $i - 0.7) rotate(random(10) + deg);
+        // transform: scale(0.1 * $i - 0.7) rotate(random(10) + deg);
+        transform: scale(0.2 * $i);
       }
     }
   }
