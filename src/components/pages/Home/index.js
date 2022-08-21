@@ -1,6 +1,14 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
-import { Box, Grid, GridItem, Text, useTheme } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  Grid,
+  GridItem,
+  Text,
+  theme,
+  useTheme,
+} from '@chakra-ui/react';
 import HomeHeadingText from '../../HomeHeadingText';
 import HomePicture from '../../HomePicture';
 import CodeBrackets from '../../CodeBrackets';
@@ -9,6 +17,8 @@ import { motion } from 'framer-motion';
 import { pageTransition, pageVariants } from '../../../utils/page-transition';
 
 const Home = () => {
+  const theme = useTheme();
+
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Grid
@@ -33,9 +43,20 @@ const Home = () => {
           <Text marginTop={'10px'} as="h2">
             Fullstack JavaScript Developer
           </Text>
-          <Link to="/contact" className="flat-button">
+          <Button
+            as={Link}
+            to="/contact"
+            className="flat-button"
+            p={'18px 18px'}
+            background={theme.colors.altColorLight}
+            color={'white'}
+            _hover={{
+              color: 'black',
+              textDecoration: 'none',
+            }}
+          >
             CONTACT ME
-          </Link>
+          </Button>
         </GridItem>
         <GridItem
           zIndex={999998}
