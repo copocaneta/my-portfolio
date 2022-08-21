@@ -1,7 +1,7 @@
 import Loader from 'react-loaders';
 import './index.scss';
 import AnimatedLetters from '../../AnimatedLetters';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PageLoader from '../../PageLoader';
 import {
   AspectRatio,
@@ -11,7 +11,6 @@ import {
   GridItem,
   HStack,
   Image,
-  keyframes,
   Modal,
   ModalBody,
   ModalCloseButton,
@@ -28,17 +27,11 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
-  transition,
   useDisclosure,
   useTheme,
 } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
-import EqualizerPortfolioImg from '../../../assets/images/portffolio/equalizer.jpeg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { Link } from '@chakra-ui/react';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { portfolioMockData } from './mock-data';
 import { AddIcon } from '@chakra-ui/icons';
 
@@ -47,6 +40,23 @@ const Portfolio = () => {
   const theme = useTheme();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalData, setModalData] = useState(null);
+  const [firstLoad, setFirstLoad] = useState(true);
+
+  const controls = useAnimationControls();
+
+  const startPortAnimation = () => {
+    controls.start((idx) => ({
+      scale: 1.0,
+      transition: { delay: 0.1 * idx },
+    }));
+  };
+
+  useEffect(() => {
+    setTimeout(() => {
+      startPortAnimation();
+      setFirstLoad(false);
+    }, 1600);
+  });
 
   return (
     <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
@@ -131,14 +141,17 @@ const Portfolio = () => {
                               initial={{
                                 scale: 0,
                               }}
-                              animate={{
-                                scale: 1.0,
-                                transition: { delay: 0.1 * idx },
-                              }}
-                              // transition={{
-                              //   delay: 0.1 * idx,
-                              //   duration: 20,
+                              // animate={{
+                              //   scale: 1.0,
+                              //   transition: { delay: 0.1 * idx },
                               // }}
+                              custom={idx}
+                              animate={controls}
+                              onLoad={() => {
+                                if (!firstLoad) {
+                                  startPortAnimation();
+                                }
+                              }}
                             >
                               <AspectRatio ratio={16 / 9}>
                                 <Button
