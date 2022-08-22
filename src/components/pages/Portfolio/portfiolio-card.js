@@ -1,6 +1,7 @@
-import { AddIcon } from '@chakra-ui/icons';
+import { AddIcon, InfoIcon } from '@chakra-ui/icons';
 import {
   AspectRatio,
+  background,
   Box,
   Button,
   HStack,
@@ -9,6 +10,8 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
+  theme,
+  useTheme,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useRef } from 'react';
@@ -25,6 +28,7 @@ const PortfolioCardItem = ({
   setModalData,
 }) => {
   const ref = useRef();
+  const theme = useTheme();
   return (
     <Flippy
       flipOnHover={true} // default false
@@ -97,7 +101,34 @@ const PortfolioCardItem = ({
         as={BackSide}
         rounded={30}
       >
-        <Text color={'black'}>Find out more</Text>
+        <Button
+          rounded={30}
+          w={'100%'}
+          h={'100%'}
+          p={10}
+          background={'transparent'}
+          display={'flex'}
+          flexDir={'column'}
+          _hover={{
+            background: 'transparent',
+          }}
+          gap={4}
+          role="group"
+          onClick={() => {
+            onOpen();
+            setModalData(item);
+          }}
+        >
+          <InfoIcon
+            w={23}
+            h={23}
+            color={'#333'}
+            _groupHover={{ color: theme.colors.altColorLight }}
+          />
+          <Text as={'span'} color={'black'}>
+            Find out more
+          </Text>
+        </Button>
       </Box>
     </Flippy>
   );
