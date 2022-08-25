@@ -87,8 +87,8 @@ const Portfolio = () => {
           </h1>
           <Text as={'p'}>
             This is where I will list some of my most recent work. Not
-            everything I did will be here since most is under confidential
-            agreements with the companies I work.
+            everything I did will be here since most is under non disclosure
+            agreements with the companies I work for or have worked in the past.
           </Text>
           <Box
             as={motion.div}
