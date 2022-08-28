@@ -1,20 +1,13 @@
 import { Link } from 'react-router-dom';
 import './index.scss';
-import {
-  Box,
-  Button,
-  Grid,
-  GridItem,
-  Text,
-  theme,
-  useTheme,
-} from '@chakra-ui/react';
+import { Box, Button, Grid, GridItem, Text, useTheme } from '@chakra-ui/react';
 import HomeHeadingText from '../../HomeHeadingText';
 import HomePicture from '../../HomePicture';
 import CodeBrackets from '../../CodeBrackets';
 import PageLoader from '../../PageLoader';
 import { motion } from 'framer-motion';
-import { pageTransition, pageVariants } from '../../../utils/page-transition';
+import { pageVariants } from '../../../utils/page-transition';
+import mycv from '../../../assets/cv/resume_thiago_bernardi.pdf';
 
 const Home = () => {
   const theme = useTheme();
@@ -40,23 +33,52 @@ const Home = () => {
           zIndex={999999}
         >
           <HomeHeadingText />
+
           <Text marginTop={'10px'} as="h2">
             Fullstack JavaScript Developer
           </Text>
-          <Button
-            as={Link}
-            to="/contact"
-            className="flat-button"
-            p={'18px 18px'}
-            background={theme.colors.altColorLight}
-            color={'white'}
-            _hover={{
-              color: 'black',
-              textDecoration: 'none',
-            }}
+
+          <Box
+            display={'flex'}
+            gap={'10px'}
+            marginTop={'25px'}
+            flexDir={{ base: 'column', lg: 'row' }}
           >
-            CONTACT ME
-          </Button>
+            <Button
+              as={Link}
+              to="/contact"
+              className="regular-button"
+              border={'none'}
+              p={'18px 18px'}
+              background={theme.colors.altColorLight}
+              color={'white'}
+              _hover={{
+                color: 'white',
+                textDecoration: 'none',
+                background: '#BE6022;',
+              }}
+            >
+              CONTACT ME
+            </Button>
+            <Button
+              as={'a'}
+              download={'My Resume'}
+              href={mycv}
+              cursor={'pointer'}
+              className="regular-button"
+              border={'none'}
+              p={'18px 18px'}
+              background={theme.colors.altColorLight}
+              color={'white'}
+              _hover={{
+                color: 'white',
+                textDecoration: 'none',
+                background: '#BE6022;',
+              }}
+            >
+              DOWNLOAD CV
+            </Button>
+          </Box>
         </GridItem>
         <GridItem
           zIndex={999998}
