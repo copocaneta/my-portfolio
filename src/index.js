@@ -55,6 +55,7 @@ root.render(
       m={0}
       p={0}
       overflow={'hidden'}
+      background={'red.50'}
     >
       <BrowserRouter>
         <App />
