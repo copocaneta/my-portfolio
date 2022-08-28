@@ -73,7 +73,7 @@ const Contact = () => {
         exit="out"
         templateColumns={{ base: '1fr', lg: '1fr 53%' }}
         templateRows={{ base: '1fr 1fr', lg: '1fr auto' }}
-        w={'100%'}
+        w={'80%'}
         mx={'50px'}
         className="container contact-page"
       >
