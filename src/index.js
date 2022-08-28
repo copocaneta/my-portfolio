@@ -10,12 +10,12 @@ const theme = extendTheme({
   styles: {
     global: {
       // styles for the `body`
-      root: {
-        bg: 'gray.400',
-      },
+      // root: {
+      //   bg: 'gray.400',
+      // },
       body: {
-        // bg: this.colors.backgroundLight,
-        color: 'white',
+        background: 'red.50',
+        color: 'black',
         height: '100%',
       },
       // styles for the `a`
@@ -55,7 +55,7 @@ root.render(
       m={0}
       p={0}
       overflow={'hidden'}
-      background={'red.50'}
+      // background={'red.50'}
     >
       <BrowserRouter>
         <App />
