@@ -4,27 +4,6 @@
   h1 {
     font-family: 'Coolvetica';
     font-weight: 200;
-    &::before {
-      content: '<h1>';
-      font-family: 'La Belle Aurore';
-      color: $primary-color-light;
-      font-size: 18px;
-      position: absolute;
-      margin-top: -40px;
-      left: 15px;
-      opacity: 0.6;
-    }
-    &::after {
-      content: '<h1/>';
-      font-family: 'La Belle Aurore';
-      color: $primary-color-light;
-      font-size: 18px;
-      position: absolute;
-      margin-top: 18px;
-      margin-left: 20px;
-      animation: fadeIn 1s 1.7s backwards;
-      opacity: 0.6;
-    }
     img {
       height: 65px;
       opacity: 0;
