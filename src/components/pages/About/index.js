@@ -1,14 +1,4 @@
-import {
-  Box,
-  Grid,
-  GridItem,
-  HStack,
-  Icon,
-  Image,
-  Tag,
-  Text,
-  VStack,
-} from '@chakra-ui/react';
+import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 import {
   faCss3,
   faGitAlt,
@@ -17,14 +7,12 @@ import {
   faPython,
   faReact,
 } from '@fortawesome/free-brands-svg-icons';
-import { faSuitcase } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { pageVariants } from '../../../utils/page-transition';
 import AnimatedLetters from '../../AnimatedLetters';
 import PageLoader from '../../PageLoader';
-import IgsImage from '../../../assets/images/about/igs.jpeg';
 import './index.scss';
 
 const About = () => {
