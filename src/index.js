@@ -14,7 +14,7 @@ const theme = extendTheme({
       //   bg: 'gray.400',
       // },
       body: {
-        background: 'red.50',
+        background: 'grey.100',
         color: 'black',
         height: '100%',
       },
