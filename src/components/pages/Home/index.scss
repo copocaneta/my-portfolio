@@ -4,20 +4,6 @@
   h1 {
     font-family: 'Coolvetica';
     font-weight: 200;
-    img {
-      height: 65px;
-      opacity: 0;
-      animation: rotateIn 1s linear both;
-      animation-delay: 1.4s;
-      &.letter-t {
-        margin-right: -35px;
-        display: inline-block;
-      }
-      &.letter-b {
-        margin-left: 10px;
-        display: inline-block;
-      }
-    }
   }
 }
 
@@ -31,7 +17,7 @@ h2 {
   animation: fadeIn 1s 1.8s backwards;
 }
 
-.flat-button {
+.regular-button {
   color: $primary-color-light;
   font-size: 13px;
   font-weight: 400;
@@ -39,7 +25,6 @@ h2 {
   font-family: sans-serif;
   text-decoration: none;
   border: 1px solid $primary-color-light;
-  margin-top: 25px;
   animation: fadeIn 1s 1.8s backwards;
   white-space: nowrap;
   align-self: flex-start;

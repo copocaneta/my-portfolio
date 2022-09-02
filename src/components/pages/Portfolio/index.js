@@ -54,6 +54,9 @@ const Portfolio = () => {
 
   useEffect(() => {
     setTimeout(() => {
+      setLetterClass('text-animate-hover');
+    }, 3000);
+    setTimeout(() => {
       startPortAnimation();
       setFirstLoad(false);
     }, 2000);
@@ -189,7 +192,7 @@ const Portfolio = () => {
         rounded={30}
       >
         <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
-        <ModalContent>
+        <ModalContent rounded={'20px'}>
           <ModalHeader>
             <Text as="span" color="black">
               {modalData?.name}

@@ -30,6 +30,7 @@ const ResponsiveMenu = () => {
   return (
     <Box display={{ lg: 'none' }}>
       <IconButton
+        color={'white'}
         ref={btnRef}
         aria-label="Menu"
         className="hamburguerMenu"
@@ -60,7 +61,7 @@ const ResponsiveMenu = () => {
           mt={'90px'}
           background={theme.colors.navBarBgLight}
         >
-          <DrawerCloseButton />
+          <DrawerCloseButton color={'white'} />
           <DrawerBody>
             <nav className={'responsive-menu'}>
               <Grid templateColumns={'1fr 1fr 1fr 1fr'} fontSize={'27px'}>
