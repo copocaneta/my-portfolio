@@ -1,13 +1,15 @@
 import { Text, useTheme } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
-import LogoTitleT from '../../assets/images/t.svg';
-import LogoTitleB from '../../assets/images/b.svg';
-import AnimatedLetters from '../AnimatedLetters';
 import TypewriterComponent from 'typewriter-effect';
+import GraphemeSplitter from 'grapheme-splitter';
 import './index.scss';
 
 const HomeHeadingText = () => {
   const theme = useTheme();
+
+  const stringSplitter = (string) => {
+    const splitter = new GraphemeSplitter();
+    return splitter.splitGraphemes(string);
+  };
 
   return (
     <>
@@ -21,11 +23,14 @@ const HomeHeadingText = () => {
         className={'home-heading'}
       >
         <TypewriterComponent
+          options={{
+            stringSplitter,
+          }}
           onInit={(typewriter) => {
             typewriter
               .pauseFor(1000)
               .typeString(
-                `<span style='line-height:1em;'>Hello, I'm Thiago Bernardi!</span>`
+                `<span style='line-height:1em;'>Hello 👋, <br>I'm Thiago Bernardi!</span>`
               )
               .pauseFor(2500)
               .deleteChars(1)
