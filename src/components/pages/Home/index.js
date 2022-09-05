@@ -21,7 +21,7 @@ const Home = () => {
         animate="animate"
         exit="out"
         className="container home-page"
-        templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
+        templateColumns={{ base: '1fr', md: '1fr 1fr' }}
         w={'100%'}
         mx={{ base: '20px', lg: '50px' }}
       >
@@ -34,7 +34,11 @@ const Home = () => {
         >
           <HomeHeadingText />
 
-          <Text marginTop={'10px'} as="h2">
+          <Text
+            marginTop={'10px'}
+            as="h2"
+            display={{ base: 'none', lg: 'block' }}
+          >
             Fullstack JavaScript Developer
           </Text>
 
@@ -82,11 +86,11 @@ const Home = () => {
         </GridItem>
         <GridItem
           zIndex={999998}
-          position={{ base: 'absolute', lg: 'unset' }}
+          position={{ base: 'absolute', md: 'unset' }}
           display={'flex'}
           width={'100%'}
-          height={{ base: '80vh', lg: '100%' }}
-          justifyContent={{ base: 'center', lg: 'unset' }}
+          height={{ base: '80vh', md: '100%' }}
+          justifyContent={{ base: 'center', md: 'unset' }}
           className={'image-zone'}
         >
           <CodeBrackets />
