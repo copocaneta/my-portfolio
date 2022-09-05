@@ -120,7 +120,10 @@ const Portfolio = () => {
                   </Text>
                 </Tab>
                 <Tab
-                  _selected={{ color: 'white', bg: theme.colors.altColorLight }}
+                  _selected={{
+                    color: 'white',
+                    bg: theme.colors.altColorLight,
+                  }}
                 >
                   <Text as="span" fontSize="2xl">
                     🧰 Backend
@@ -132,10 +135,12 @@ const Portfolio = () => {
                   <Box>
                     <Grid
                       gap={10}
-                      templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
+                      templateColumns={{
+                        base: 'minmax(100px, 1fr)',
+                        lg: '1fr 1fr 1fr',
+                      }}
                     >
                       {portfolioMockData.frontend.map((item, idx) => {
-                        console.log();
                         return (
                           <GridItem key={idx}>
                             <PortfolioCardItem
@@ -158,7 +163,10 @@ const Portfolio = () => {
                   <Box>
                     <Grid
                       gap={10}
-                      templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
+                      templateColumns={{
+                        base: 'minmax(100px, 1fr)',
+                        lg: '1fr 1fr 1fr',
+                      }}
                     >
                       {portfolioMockData.backend.map((item, idx) => {
                         return (
@@ -166,7 +174,7 @@ const Portfolio = () => {
                             <PortfolioCardItem
                               orderOnPage={'second'}
                               item={item}
-                              idx={idx}
+                              // idx={idx}
                               controls={controls}
                               startPortAnimation={startPortAnimation}
                               firstLoad={firstLoad}
