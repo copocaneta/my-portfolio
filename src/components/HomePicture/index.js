@@ -18,8 +18,8 @@ const HomePicture = () => {
   return (
     <Box
       className="logo-container brush-wrap"
-      maxWidth={{ base: '320px', lg: 'initial' }}
-      position={{ base: 'inherit;', lg: 'relative' }}
+      maxWidth={{ base: '320px', md: 'initial' }}
+      position={{ base: 'inherit;', md: 'relative' }}
     >
       {/* <img ref={solidLogoRef} className="solid-logo" src={LogoTb} alt="TB" /> */}
 
