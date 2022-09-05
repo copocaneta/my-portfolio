@@ -80,7 +80,7 @@ const PortfolioCardItem = ({
             </Button>
           </AspectRatio>
           <Box mt={'11px'} mx={'15px'}>
-            <Text as="span" color="black">
+            <Text as="span" color="black" isTruncated>
               <strong>{item.name}</strong>
             </Text>
             <HStack my={4} spacing={4}>
