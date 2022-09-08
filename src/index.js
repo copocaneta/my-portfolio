@@ -51,7 +51,8 @@ root.render(
     <Container
       maxW={'100%'}
       width={'100%'}
-      height={'100vh'}
+      height={{ base: 'calc(85vh)', lg: 'calc(100vh)' }}
+      maxH={'calc(100vh)'}
       m={0}
       p={0}
       overflow={'hidden'}
