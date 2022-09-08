@@ -24,7 +24,13 @@ const About = () => {
     }, 3000);
   }, []);
   return (
-    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
+    <Box
+      display={'flex'}
+      justifyContent={'center'}
+      w={'100%'}
+      h={'100%'}
+      mt={{ base: '30px', lg: 'unset' }}
+    >
       <Grid
         as={motion.div}
         variants={pageVariants}

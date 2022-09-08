@@ -1,4 +1,3 @@
-import Loader from 'react-loaders';
 import './index.scss';
 import AnimatedLetters from '../../AnimatedLetters';
 import { useEffect, useState } from 'react';
@@ -9,7 +8,6 @@ import {
   Button,
   Grid,
   GridItem,
-  HStack,
   Image,
   Modal,
   ModalBody,
@@ -23,9 +21,6 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
-  Tag,
-  TagLabel,
-  TagLeftIcon,
   Text,
   useDisclosure,
   useTheme,
@@ -33,7 +28,6 @@ import {
 import { motion, useAnimationControls } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
 import { portfolioMockData } from './mock-data';
-import { AddIcon } from '@chakra-ui/icons';
 import PortfolioCardItem from './portfiolio-card';
 
 const Portfolio = () => {
@@ -63,7 +57,13 @@ const Portfolio = () => {
   });
 
   return (
-    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
+    <Box
+      display={'flex'}
+      justifyContent={'center'}
+      w={'100%'}
+      h={'100%'}
+      mt={{ base: '30px', lg: 'unset' }}
+    >
       <Grid
         as={motion.div}
         variants={pageVariants}
@@ -191,48 +191,48 @@ const Portfolio = () => {
             </Tabs>
           </Box>
         </GridItem>
-      </Grid>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered
-        size={'xl'}
-        rounded={30}
-      >
-        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
-        <ModalContent rounded={'20px'}>
-          <ModalHeader>
-            <Text as="span" color="black">
-              {modalData?.name}
-            </Text>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Box>
-              {console.log(modalData?.image)}
-              <AspectRatio ratio={16 / 9} marginBottom={'20px'}>
-                <Image
-                  src={
-                    modalData &&
-                    require(`../../../assets/images/${modalData?.image}`)
-                  }
-                  rounded={30}
-                />
-              </AspectRatio>
-
+        <Modal
+          isOpen={isOpen}
+          onClose={onClose}
+          isCentered
+          size={'xl'}
+          rounded={30}
+        >
+          <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
+          <ModalContent rounded={'20px'}>
+            <ModalHeader>
               <Text as="span" color="black">
-                {modalData?.description}
+                {modalData?.name}
               </Text>
-            </Box>
-          </ModalBody>
+            </ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <Box>
+                {console.log(modalData?.image)}
+                <AspectRatio ratio={16 / 9} marginBottom={'20px'}>
+                  <Image
+                    src={
+                      modalData &&
+                      require(`../../../assets/images/${modalData?.image}`)
+                    }
+                    rounded={30}
+                  />
+                </AspectRatio>
 
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+                <Text as="span" color="black">
+                  {modalData?.description}
+                </Text>
+              </Box>
+            </ModalBody>
+
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
+      </Grid>
       <PageLoader />
     </Box>
   );
