@@ -57,184 +57,187 @@ const Portfolio = () => {
   });
 
   return (
-    <Box
-      display={'flex'}
-      justifyContent={'center'}
-      w={'100%'}
-      h={'100%'}
-      mt={{ base: '30px', lg: 'unset' }}
-    >
-      <Grid
-        as={motion.div}
-        variants={pageVariants}
-        initial="initial"
-        animate="animate"
-        exit="out"
-        templateColumns={'1fr'}
-        w={'80%'}
-        mx={'50px'}
-        className="container portfolio-page"
+    <>
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        w={'100%'}
+        h={'100%'}
+        mt={{ base: '30px', lg: 'unset' }}
       >
-        <GridItem
-          className="text-zone"
-          display={'flex'}
-          flexDirection={'column'}
-          justifyContent={'center'}
+        <Grid
+          as={motion.div}
+          variants={pageVariants}
+          initial="initial"
+          animate="animate"
+          exit="out"
+          templateColumns={'1fr'}
+          w={'80%'}
+          mx={'50px'}
+          className="container portfolio-page"
         >
-          <h1>
-            <AnimatedLetters
-              strArr={'Portfolio'.split('')}
-              idx={15}
-              letterClass={letterClass}
-            />
-          </h1>
-          <Text as={'p'}>
-            This is where I will list some of my most recent work. Not
-            everything I did will be here since most is under non disclosure
-            agreements with the companies I work for or have worked in the past.
-          </Text>
-          <Box
-            as={motion.div}
-            initial={{
-              opacity: 0,
-            }}
-            animate={{
-              opacity: 1,
-              transition: { delay: 1.5, duration: 2.5 },
-            }}
-            my={'50px'}
-            border={'1px solid #ddd'}
-            rounded={30}
-            padding={5}
+          <GridItem
+            className="text-zone"
+            display={'flex'}
+            flexDirection={'column'}
+            justifyContent={'center'}
           >
-            <Tabs isLazy={true} isFitted variant="soft-rounded">
-              <TabList mb="1em">
-                <Tab
-                  _selected={{
-                    color: 'white',
-                    bg: theme.colors.altColorLight,
-                  }}
-                >
-                  <Text as="span" fontSize="2xl">
-                    🛠 Frontend
-                  </Text>
-                </Tab>
-                <Tab
-                  _selected={{
-                    color: 'white',
-                    bg: theme.colors.altColorLight,
-                  }}
-                >
-                  <Text as="span" fontSize="2xl">
-                    🧰 Backend
-                  </Text>
-                </Tab>
-              </TabList>
-              <TabPanels>
-                <TabPanel>
-                  <Box>
-                    <Grid
-                      gap={10}
-                      templateColumns={{
-                        base: 'minmax(100px, 1fr)',
-                        lg: '1fr 1fr 1fr',
-                      }}
-                    >
-                      {portfolioMockData.frontend.map((item, idx) => {
-                        return (
-                          <GridItem key={idx}>
-                            <PortfolioCardItem
-                              orderOnPage={'first'}
-                              item={item}
-                              idx={idx}
-                              controls={controls}
-                              startPortAnimation={startPortAnimation}
-                              firstLoad={firstLoad}
-                              onOpen={onOpen}
-                              setModalData={setModalData}
-                            />
-                          </GridItem>
-                        );
-                      })}
-                    </Grid>
-                  </Box>
-                </TabPanel>
-                <TabPanel>
-                  <Box>
-                    <Grid
-                      gap={10}
-                      templateColumns={{
-                        base: 'minmax(100px, 1fr)',
-                        lg: '1fr 1fr 1fr',
-                      }}
-                    >
-                      {portfolioMockData.backend.map((item, idx) => {
-                        return (
-                          <GridItem key={idx}>
-                            <PortfolioCardItem
-                              orderOnPage={'second'}
-                              item={item}
-                              // idx={idx}
-                              controls={controls}
-                              startPortAnimation={startPortAnimation}
-                              firstLoad={firstLoad}
-                              onOpen={onOpen}
-                              setModalData={setModalData}
-                            />
-                          </GridItem>
-                        );
-                      })}
-                    </Grid>
-                  </Box>
-                </TabPanel>
-              </TabPanels>
-            </Tabs>
-          </Box>
-        </GridItem>
-        <Modal
-          isOpen={isOpen}
-          onClose={onClose}
-          isCentered
-          size={'xl'}
-          rounded={30}
-        >
-          <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
-          <ModalContent rounded={'20px'}>
-            <ModalHeader>
+            <h1>
+              <AnimatedLetters
+                strArr={'Portfolio'.split('')}
+                idx={15}
+                letterClass={letterClass}
+              />
+            </h1>
+            <Text as={'p'}>
+              This is where I will list some of my most recent work. Not
+              everything I did will be here since most is under non disclosure
+              agreements with the companies I work for or have worked in the
+              past.
+            </Text>
+            <Box
+              as={motion.div}
+              initial={{
+                opacity: 0,
+              }}
+              animate={{
+                opacity: 1,
+                transition: { delay: 1.5, duration: 2.5 },
+              }}
+              my={'50px'}
+              border={'1px solid #ddd'}
+              rounded={30}
+              padding={5}
+            >
+              <Tabs isLazy={true} isFitted variant="soft-rounded">
+                <TabList mb="1em">
+                  <Tab
+                    _selected={{
+                      color: 'white',
+                      bg: theme.colors.altColorLight,
+                    }}
+                  >
+                    <Text as="span" fontSize="2xl">
+                      🛠 Frontend
+                    </Text>
+                  </Tab>
+                  <Tab
+                    _selected={{
+                      color: 'white',
+                      bg: theme.colors.altColorLight,
+                    }}
+                  >
+                    <Text as="span" fontSize="2xl">
+                      🧰 Backend
+                    </Text>
+                  </Tab>
+                </TabList>
+                <TabPanels>
+                  <TabPanel>
+                    <Box>
+                      <Grid
+                        gap={10}
+                        templateColumns={{
+                          base: 'minmax(100px, 1fr)',
+                          lg: '1fr 1fr 1fr',
+                        }}
+                      >
+                        {portfolioMockData.frontend.map((item, idx) => {
+                          return (
+                            <GridItem key={idx}>
+                              <PortfolioCardItem
+                                orderOnPage={'first'}
+                                item={item}
+                                idx={idx}
+                                controls={controls}
+                                startPortAnimation={startPortAnimation}
+                                firstLoad={firstLoad}
+                                onOpen={onOpen}
+                                setModalData={setModalData}
+                              />
+                            </GridItem>
+                          );
+                        })}
+                      </Grid>
+                    </Box>
+                  </TabPanel>
+                  <TabPanel>
+                    <Box>
+                      <Grid
+                        gap={10}
+                        templateColumns={{
+                          base: 'minmax(100px, 1fr)',
+                          lg: '1fr 1fr 1fr',
+                        }}
+                      >
+                        {portfolioMockData.backend.map((item, idx) => {
+                          return (
+                            <GridItem key={idx}>
+                              <PortfolioCardItem
+                                orderOnPage={'second'}
+                                item={item}
+                                // idx={idx}
+                                controls={controls}
+                                startPortAnimation={startPortAnimation}
+                                firstLoad={firstLoad}
+                                onOpen={onOpen}
+                                setModalData={setModalData}
+                              />
+                            </GridItem>
+                          );
+                        })}
+                      </Grid>
+                    </Box>
+                  </TabPanel>
+                </TabPanels>
+              </Tabs>
+            </Box>
+          </GridItem>
+        </Grid>
+        <PageLoader />
+      </Box>
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        isCentered
+        // size={'xl'}
+        rounded={30}
+      >
+        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
+        <ModalContent rounded={'20px'}>
+          <ModalHeader>
+            <Text as="span" color="black">
+              {modalData?.name}
+            </Text>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Box>
+              {console.log(modalData?.image)}
+              <AspectRatio ratio={16 / 9} marginBottom={'20px'}>
+                <Image
+                  src={
+                    modalData &&
+                    require(`../../../assets/images/${modalData?.image}`)
+                  }
+                  rounded={30}
+                />
+              </AspectRatio>
+
               <Text as="span" color="black">
-                {modalData?.name}
+                {modalData?.description}
               </Text>
-            </ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Box>
-                {console.log(modalData?.image)}
-                <AspectRatio ratio={16 / 9} marginBottom={'20px'}>
-                  <Image
-                    src={
-                      modalData &&
-                      require(`../../../assets/images/${modalData?.image}`)
-                    }
-                    rounded={30}
-                  />
-                </AspectRatio>
+            </Box>
+          </ModalBody>
 
-                <Text as="span" color="black">
-                  {modalData?.description}
-                </Text>
-              </Box>
-            </ModalBody>
-
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
-      </Grid>
-      <PageLoader />
-    </Box>
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
   );
 };
 
