@@ -1,7 +1,6 @@
 import { AddIcon, InfoIcon } from '@chakra-ui/icons';
 import {
   AspectRatio,
-  background,
   Box,
   Button,
   HStack,
@@ -10,7 +9,6 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
-  theme,
   useTheme,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
@@ -36,6 +34,10 @@ const PortfolioCardItem = ({
       ref={ref} // to use toggle method like ref.curret.toggle()
       // if you pass isFlipped prop component will be controlled component.
       // and other props, which will go to div
+      onClick={() => {
+        onOpen();
+        setModalData(item);
+      }}
     >
       <Box as={FrontSide} p={0} rounded={30}>
         <Box
