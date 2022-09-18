@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
+import Div100vh from 'react-div-100vh';
 
 const theme = extendTheme({
   styles: {
@@ -45,14 +46,18 @@ const theme = extendTheme({
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+let vh = window.innerHeight * 0.01;
+document.documentElement.style.setProperty('--vh', `${vh}px`);
 root.render(
   // <React.StrictMode>
   <ChakraProvider theme={theme}>
     <Container
+      as={Div100vh}
       maxW={'100%'}
       width={'100%'}
-      height={{ base: 'calc(85vh)', lg: 'calc(100vh)' }}
-      maxH={'calc(100vh)'}
+      // height={{ base: 'calc(90vh)', lg: 'calc(100vh)' }}
+      // minH={{ lg: 'calc(100vh)' }}
+      // maxH={'calc(100vh)'}
       m={0}
       p={0}
       overflow={'hidden'}
