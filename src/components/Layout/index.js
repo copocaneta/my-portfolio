@@ -7,7 +7,7 @@ const Layout = () => {
   return (
     <Grid
       templateColumns={{ base: '1fr', lg: '68px 1fr' }}
-      templateRows={{ base: '90px calc(85vh - 90px)', lg: 'auto' }}
+      templateRows={{ base: '90px 1fr', lg: 'auto' }}
       maxW={'100%'}
       maxH={'100vh'}
       width={'100%'}
