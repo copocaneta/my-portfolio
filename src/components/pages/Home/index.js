@@ -89,7 +89,7 @@ const Home = () => {
           position={{ base: 'absolute', md: 'unset' }}
           display={'flex'}
           width={'100%'}
-          height={{ base: '80vh', md: '100%' }}
+          height={{ base: '100%' }}
           justifyContent={{ base: 'center', md: 'unset' }}
           className={'image-zone'}
         >
