@@ -29,7 +29,8 @@ const PortfolioCardItem = ({
   const theme = useTheme();
   return (
     <Flippy
-      flipOnHover={true} // default false
+      flipOnHover={{ base: false, lg: true }} // default false
+      flipOnClick={{ base: false, lg: true }}
       flipDirection="horizontal" // horizontal or vertical
       ref={ref} // to use toggle method like ref.curret.toggle()
       // if you pass isFlipped prop component will be controlled component.
