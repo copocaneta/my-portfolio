@@ -30,7 +30,7 @@
 .contact-page,
 .portfolio-page {
   h1 {
-    font-size: 53px;
+    font-size: 48px;
     font-family: 'Coolvetica';
     color: $primary-color-light;
     font-weight: 400;
@@ -40,8 +40,6 @@
   p {
     // font-style: 13px;
     color: $text-color-light;
-    font-family: sans-serif;
-    font-weight: 300;
     min-width: fit-content;
     animation: pulse 1s;
 
