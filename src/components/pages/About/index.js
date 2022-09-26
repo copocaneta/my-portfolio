@@ -58,12 +58,17 @@ const About = () => {
           </h1>
           <Box display={'flex'} gap={'15px'} flexDir={'column  '}>
             <Text>
-              Hello there, I am Thiago Bernardi, a Full Stack developer from São
-              Paulo Brazil, I've been working with web development, specially
-              frontend development since 2001, I've started with simple HTML and
-              CSS then moved to ASP 1.0 and then to PHP. I've also programmed on
-              Python doing backend and automation tasks mostly for the web
-              hosting industry.
+              Hello there, I am Thiago Bernardi, a{' '}
+              <strong>Full Stack developer</strong> from São Paulo Brazil.
+            </Text>
+            <Text>
+              I've been working with web development, specially frontend
+              development since 2001.
+            </Text>
+            <Text>
+              I've started with simple HTML and CSS then moved to ASP 1.0 and
+              then to PHP. I've also programmed on Python doing backend and
+              automation tasks mostly for the web hosting industry.
             </Text>
             <Text>
               I also have experience with Django and Flask (Python frameworks)
@@ -76,9 +81,13 @@ const About = () => {
               On the frontend I've been using React and its frameworks such as
               Gatsby and NextJS. I have extensive knowledge on CSS and follow
               the best coding practices such as clean code and Test Driven
-              Development (Jest and React Testing Library). Lately I've been
-              working a lot with Web3, joining JavaScript with blockchains dapps
-              by using libraries such as Moralis and Alchemy.
+              Development (Jest and React Testing Library).
+            </Text>
+            <Text>
+              In my current role as a Lead Full Stack engineer I've been working
+              with all sorts of projects involving Web3, getting JavaScript
+              (NodeJS) integrated with blockchains dapps by using libraries such
+              as Moralis and Alchemy.
             </Text>
 
             <Text>
@@ -90,7 +99,7 @@ const About = () => {
         </GridItem>
         <GridItem
           className="stage-cube-cont"
-          display={'flex'}
+          display={{ base: 'flex', md: 'none', lg: 'flex' }}
           justifyContent={'center'}
           alignItems={'center'}
           height={{ base: '400px', lg: 'auto' }}
