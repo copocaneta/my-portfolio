@@ -8,6 +8,10 @@ import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
 import Div100vh from 'react-div-100vh';
 
 const theme = extendTheme({
+  fonts: {
+    body: `'Poppins', sans-serif`,
+    heading: `'Poppins', sans-serif`,
+  },
   styles: {
     global: {
       // styles for the `body`
@@ -16,7 +20,8 @@ const theme = extendTheme({
       // },
       body: {
         background: 'grey.100',
-        color: 'black',
+        color: 'textColorLight',
+        fontSize: '14px',
         height: '100%',
       },
       // styles for the `a`
@@ -46,8 +51,6 @@ const theme = extendTheme({
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-let vh = window.innerHeight * 0.01;
-document.documentElement.style.setProperty('--vh', `${vh}px`);
 root.render(
   // <React.StrictMode>
   <ChakraProvider theme={theme}>
