@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 import CanvasLoader from '../Loader';
@@ -10,7 +10,8 @@ Globals.assign({
 });
 
 const Home = ({ parentRef }) => {
-  const { setSize, size, invalidate, camera, scene } = useThree();
+  const { setSize, size } = useThree();
+  const [isVisible, setVisible] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => {
       console.log(`This is the size: ${JSON.stringify(size)}`);
@@ -19,13 +20,13 @@ const Home = ({ parentRef }) => {
         let width = parentRef.current.offsetWidth;
         console.log(`This is the ref size: ${width} and ${height}`);
         setSize(width, height);
+        deskRotation.finish();
+        setVisible(true);
       }
-      // camera.position.set(0, 0, 200);
-      // invalidate();
-      camera.updateProjectionMatrix();
-    }, 5000);
+    }, 0);
     return () => clearTimeout(timer);
   }, []);
+
   const { deskRotation } = useSpring({
     from: {
       deskRotation: Math.PI / 7,
@@ -50,27 +51,32 @@ const Home = ({ parentRef }) => {
 
   const computer = useGLTF('./copocaneta_setup/copocaneta_setup.gltf');
   return (
-    <mesh>
-      <hemisphereLight intensity={0.15} groundColor="black" />
-      <pointLight intensity={1} />
-      <spotLight
-        position={[-20, 50, 10]}
-        angle={0.12}
-        penumbra={1}
-        intensity={1}
-        castShadow
-        shadow-mapSize={1024}
-      />
-      <animated.group rotation-y={deskRotation}>
-        <primitive
-          object={computer.scene}
-          onClick={(e) => console.log('you clicked', e.object.name)}
-          scale={0.95}
-          position={[0, -4.25, -1.5]}
-          rotation={[-0.01, -0.2, -0.1]}
-        />
-      </animated.group>
-    </mesh>
+    <>
+      {console.log(`isVisible: ${isVisible}`)}
+      {isVisible && (
+        <mesh>
+          <hemisphereLight intensity={0.15} groundColor="black" />
+          <pointLight intensity={1} />
+          <spotLight
+            position={[-20, 50, 10]}
+            angle={0.12}
+            penumbra={1}
+            intensity={1}
+            castShadow
+            shadow-mapSize={1024}
+          />
+          <animated.group rotation-y={deskRotation}>
+            <primitive
+              object={computer.scene}
+              onClick={(e) => console.log('you clicked', e.object.name)}
+              scale={0.95}
+              position={[0, -4.25, -1.5]}
+              rotation={[-0.01, -0.2, -0.1]}
+            />
+          </animated.group>
+        </mesh>
+      )}
+    </>
   );
 };
 
@@ -81,7 +87,7 @@ const HomeCanvas = ({ parentRef }) => {
       shadows
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
-      concurrent
+      // concurrent
     >
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls
