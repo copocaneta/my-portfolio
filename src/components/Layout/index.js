@@ -12,6 +12,7 @@ const Layout = () => {
       maxH={'100vh'}
       width={'100%'}
       height={'100%'}
+      background={'#050816'}
     >
       {/* <div className="App"> */}
       <Sidebar id={'navbar-menu'} />
