@@ -38,7 +38,10 @@ const Home = () => {
           <Flex position="absolute">
             <Text
               as="h1"
-              color={{ base: 'white', lg: theme.colors.textColorLight }}
+              color={{
+                base: 'white',
+                // lg: theme.colors.textColorLight
+              }}
               textShadow={{ base: '2px 2px black;', lg: 'none' }}
               wordBreak={'break-word'}
               fontSize={{ base: '46px', lg: '53px' }}
