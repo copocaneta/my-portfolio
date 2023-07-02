@@ -1,5 +1,5 @@
 import './index.scss';
-import { Box, Flex, Text, useTheme } from '@chakra-ui/react';
+import { Box, Circle, Flex, Text, useTheme } from '@chakra-ui/react';
 import PageLoader from '../../PageLoader';
 import { motion } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
@@ -35,20 +35,52 @@ const Home = () => {
           height={{ base: '100%' }}
           justifyContent={{ base: 'center', md: 'unset' }}
         >
-          <Flex position="absolute">
-            <Text
-              as="h1"
-              color={{
-                base: 'white',
-                // lg: theme.colors.textColorLight
-              }}
-              textShadow={{ base: '2px 2px black;', lg: 'none' }}
-              wordBreak={'break-word'}
-              fontSize={{ base: '46px', lg: '53px' }}
-              lineHeight={'38px'}
+          <Flex
+            position="absolute"
+            marginX="auto"
+            top="120px"
+            left="120px"
+            gap={5}
+          >
+            <Flex
+              flexDir="column"
+              justifyContent="center"
+              marginTop="5px"
+              alignItems="center"
             >
-              Hi, I'm Thiago Bernardi
-            </Text>
+              <Circle size="25px" bg="#915eff"></Circle>
+              <Box
+                width="7px"
+                height="80"
+                bgGradient="linear(to-b, #915eff, transparent)"
+              ></Box>
+            </Flex>
+            <Flex flexDir="column" gap={5}>
+              <Text
+                as="h1"
+                color={{
+                  base: 'white',
+                  // lg: theme.colors.textColorLight
+                }}
+                fontWeight={900}
+                textShadow={{ base: '2px 2px black;', lg: 'none' }}
+                wordBreak={'break-word'}
+                fontSize={{ base: '46px', lg: '53px' }}
+                lineHeight={'38px'}
+              >
+                Hi, I'm <span color="red">Thiago Bernardi</span>
+              </Text>
+              <Text
+                as="h2"
+                color={{
+                  base: 'white',
+                }}
+                fontSize={25}
+                fontWeight={500}
+              >
+                A fullstack web and mobile software engineer
+              </Text>
+            </Flex>
           </Flex>
           <Flex flex={1} ref={stageCanvasRef}>
             <HomeCanvas parentRef={stageCanvasRef} />
