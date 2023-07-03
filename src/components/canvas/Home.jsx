@@ -23,7 +23,7 @@ const Home = ({ parentRef }) => {
         deskRotation.finish();
         setVisible(true);
       }
-    }, 0);
+    }, 200);
     return () => clearTimeout(timer);
   }, []);
 
