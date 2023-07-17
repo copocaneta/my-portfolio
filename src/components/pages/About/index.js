@@ -1,19 +1,55 @@
-import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
-import {
-  faCss3,
-  faGitAlt,
-  faHtml5,
-  faJsSquare,
-  faPython,
-  faReact,
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from 'react-vertical-timeline-component';
+import { experiences } from '../../../contants';
 import { pageVariants } from '../../../utils/page-transition';
 import AnimatedLetters from '../../AnimatedLetters';
 import PageLoader from '../../PageLoader';
 import './index.scss';
+
+const ExperienceCard = ({ experience }) => {
+  return (
+    <VerticalTimelineElement
+      contentStyle={{ background: '#1d1836', color: '#fff' }}
+      contentArrowStyle={{ borderRight: '7px solid #232621' }}
+      date={experience.date}
+      iconStyle={{ background: experience.iconBg }}
+      icon={
+        <div className="flex justify-center items-center w-full h-full">
+          <img
+            src={experience.icon}
+            alt={experience.company_name}
+            className="w-[60%] h-[60%] object-contain"
+          />
+        </div>
+      }
+    >
+      <div>
+        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
+        <p
+          className="text-secondary text-[16px] font-semibold"
+          style={{ magin: 0 }}
+        >
+          {experience.company_name}
+        </p>
+      </div>
+      <ul className="mt-5 list-disc ml-5 space-y-2">
+        {experience.points.map((point, idx) => (
+          <li
+            key={`experience-point-${idx}`}
+            className="text-white-100  text-[14px] pl-1 tracking-wider"
+          >
+            {point}
+          </li>
+        ))}
+      </ul>
+    </VerticalTimelineElement>
+  );
+};
 
 const About = () => {
   const [letterClass, setLetterClass] = useState('text-animate');
@@ -31,163 +67,89 @@ const About = () => {
       h={'100%'}
       mt={{ base: '30px', lg: 'unset' }}
     >
-      <Grid
+      <Flex
         as={motion.div}
         variants={pageVariants}
         initial="initial"
         animate="animate"
         exit="out"
         className="container about-page"
-        templateColumns={{ base: '1fr', lg: '1fr 1fr' }}
-        templateRows={{ base: '1fr 400px', lg: 'auto' }}
         w={'80%'}
         mx={'50px'}
+        flexDir={'column'}
+        justify={'center'}
       >
-        <GridItem
-          className="text-zone"
-          display={'flex'}
-          flexDirection={'column'}
-          justifyContent={'center'}
+        <Text
+          as="h1"
+          color={{
+            base: 'white',
+          }}
+          fontSize={'48px'}
+          fontWeight={'extrabold'}
         >
-          <h1>
-            <AnimatedLetters
-              letterClass={letterClass}
-              strArr={'About me'.split('')}
-              idx={15}
-            />
-          </h1>
-          <Box display={'flex'} gap={'15px'} flexDir={'column  '}>
-            <Text>
-              Hello there, I am Thiago Bernardi, a{' '}
-              <strong>Full Stack developer</strong> from São Paulo Brazil.
-            </Text>
-            <Text>
-              I've been working with web development, specially frontend
-              development since 2001.
-            </Text>
-            <Text>
-              I've started with simple HTML and CSS then moved to ASP 1.0 and
-              then to PHP. I've also programmed on Python doing backend and
-              automation tasks mostly for the web hosting industry.
-            </Text>
-            <Text>
-              I also have experience with Django and Flask (Python frameworks)
-              but my passion is for JavaScript and this is where i thrive and
-              concentrate the latest years of my web development career. I've
-              been programming on NodeJS for Rest APIs using Express, NestJS or
-              sometimes frameworks like Strapi or Sanity.
-            </Text>
-            <Text>
-              On the frontend I've been using React and its frameworks such as
-              Gatsby and NextJS. I have extensive knowledge on CSS and follow
-              the best coding practices such as clean code and Test Driven
-              Development (Jest and React Testing Library).
-            </Text>
-            <Text>
-              In my current role as a Lead Full Stack engineer I've been working
-              with all sorts of projects involving Web3, getting JavaScript
-              (NodeJS) integrated with blockchains dapps by using libraries such
-              as Moralis and Alchemy.
-            </Text>
-
-            <Text>
-              Lately I've been working as a Full Stack engineer in a London
-              based web3 venture builder company and have been helping them
-              build several projects that innovated the Web3 scene.
-            </Text>
-          </Box>
-        </GridItem>
-        <GridItem
-          className="stage-cube-cont"
-          display={{ base: 'flex', md: 'none', lg: 'flex' }}
-          justifyContent={'center'}
-          alignItems={'center'}
-          height={{ base: '400px', lg: 'auto' }}
-        >
-          <Box
-            as={'div'}
-            marginTop={{ base: '-75%', lg: '-25%' }}
-            marginLeft={{ base: '-75%', lg: '-25%' }}
-            className="cubespinner"
-          >
-            <div className="face1">
-              <FontAwesomeIcon icon={faPython} color="#4B8BBE" />
-            </div>
-            <div className="face2">
-              <FontAwesomeIcon icon={faHtml5} color="#F06529" />
-            </div>
-            <div className="face3">
-              <FontAwesomeIcon icon={faCss3} color="#28a4D9" />
-            </div>
-            <div className="face4">
-              <FontAwesomeIcon icon={faReact} color="#5Ed4f4" />
-            </div>
-            <div className="face5">
-              <FontAwesomeIcon icon={faJsSquare} color="#EFD81D" />
-            </div>
-            <div className="face6">
-              <FontAwesomeIcon icon={faGitAlt} color="#EC4D28" />
-            </div>
-          </Box>
-        </GridItem>
-      </Grid>
-      {/* TODO: later, make a career and Education section */}
-      {/* <Box w={'80%'} mt={'25px'} display={'flex'} flexDir={'column'}>
-        <Text as={'h3'} fontSize={'1.5em'}>
-          Career <FontAwesomeIcon icon={faSuitcase} />
+          About me
         </Text>
         <Box
           display={'flex'}
-          w={'100%'}
+          gap={'15px'}
           flexDir={'column'}
-          alignItems={'center'}
+          color={'#aaa6c3'}
+          fontSize={'17px'}
         >
-          <Box
-            mt={'10px'}
-            rounded={'10px'}
-            border="1px"
-            borderColor="gray.300"
-            background={'white'}
-            w={'95%'}
-            p={10}
-          >
-            <Grid templateColumns={'100px 1fr 150px'} gap={'20px'}>
-              <GridItem>
-                <Image src={IgsImage} />
-              </GridItem>
-              <GridItem display={'flex'}>
-                <VStack
-                  display={'flex'}
-                  flexDir={'column'}
-                  alignItems={'flex-start'}
-                  justifyContent={'center'}
-                >
-                  <Text>
-                    <strong>Company</strong>
-                  </Text>
-                  <Text>
-                    <strong>Position</strong>
-                  </Text>
-                  <HStack>
-                    <Tag>JavaScript</Tag>
-                    <Tag>CSS</Tag>
-                    <Tag>Python</Tag>
-                  </HStack>
-                </VStack>
-              </GridItem>
-              <GridItem
-                display={'flex'}
-                justifyContent={'flex-end'}
-                alignItems={'center'}
-              >
-                <Text>2021</Text>
-              </GridItem>
-            </Grid>
-          </Box>
+          <Text>
+            Hey there! I'm Thiago Bernardi, a Full Stack developer from São
+            Paulo, Brazil.
+          </Text>
+          <Text>
+            I've been immersed in the web development world for over 20 years,
+            handling both frontend and backend software engineering with
+            expertise. While I have a strong affinity for frontend work, my
+            backend skills are equally advanced.
+          </Text>
+          <Text>
+            JavaScript and its fantastic frameworks have played a major role in
+            my journey. When it comes to the frontend, I specialize in React,
+            utilizing tools like Gatsby and Next.js to create exceptional user
+            experiences. Of course, I'm well-versed in CSS and adhere to best
+            practices to ensure clean code and optimal styling.
+          </Text>
+          <Text>
+            On the backend side, I have a deep understanding of Node.js. I've
+            successfully built robust Rest APIs using frameworks like Express
+            and NestJS. It's worth mentioning that I apply Test Driven
+            Development (TDD) extensively to backend development, emphasizing
+            high-quality code and reliable functionality.
+          </Text>
+          <Text>
+            As a Tech Lead, I've developed strong leadership skills, guiding and
+            motivating my team towards success. Taking full ownership of my
+            projects and driving them forward is an integral part of my
+            approach. I create an environment that fosters collaboration, where
+            everyone can contribute their best.
+          </Text>
+          <Text>
+            In the past, I've gained valuable experience with Web3 technologies,
+            seamlessly integrating JavaScript (Node.js) with blockchain dapps.
+            I've leveraged libraries like Moralis and Alchemy to facilitate
+            smooth connections. Although I'm not currently engaged in Web3
+            projects, my prior experience has significantly broadened my skill
+            set.
+          </Text>
+          <Text>
+            Currently, as a Tech Lead, I harness my technical expertise and
+            leadership abilities to guide and mentor the team. My focus is on
+            delivering high-quality results and fostering a culture of
+            continuous improvement.
+          </Text>
+          <VerticalTimeline>
+            {experiences.map((experience, idx) => (
+              <ExperienceCard key={idx} experience={experience} />
+            ))}
+          </VerticalTimeline>
         </Box>
-      </Box> */}
 
-      <PageLoader />
+        <PageLoader />
+      </Flex>
     </Box>
   );
 };
