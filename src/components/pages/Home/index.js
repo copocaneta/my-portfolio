@@ -38,8 +38,8 @@ const Home = () => {
           <Flex
             position="absolute"
             marginX="auto"
-            top="120px"
-            left="120px"
+            top={{ base: '60px', md: '120px' }}
+            left={{ base: '5px', md: '120px' }}
             gap={5}
           >
             <Flex
@@ -66,9 +66,9 @@ const Home = () => {
                 textShadow={{ base: '2px 2px black;', lg: 'none' }}
                 wordBreak={'break-word'}
                 fontSize={{ base: '46px', lg: '53px' }}
-                lineHeight={'38px'}
+                lineHeight={{ base: '40px', md: '38px' }}
               >
-                Hi, I'm <span color="red">Thiago Bernardi</span>
+                Hi, I'm Thiago Bernardi
               </Text>
               <Text
                 as="h2"
@@ -77,6 +77,7 @@ const Home = () => {
                 }}
                 fontSize={25}
                 fontWeight={500}
+                lineHeight={{ base: '30px', md: '38px' }}
               >
                 A fullstack web and mobile software engineer
               </Text>
