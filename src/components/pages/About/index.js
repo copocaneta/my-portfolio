@@ -10,6 +10,7 @@ import { pageVariants } from '../../../utils/page-transition';
 import AnimatedLetters from '../../AnimatedLetters';
 import PageLoader from '../../PageLoader';
 import './index.scss';
+import 'react-vertical-timeline-component/style.min.css';
 
 const ExperienceCard = ({ experience }) => {
   return (
@@ -17,15 +18,22 @@ const ExperienceCard = ({ experience }) => {
       contentStyle={{ background: '#1d1836', color: '#fff' }}
       contentArrowStyle={{ borderRight: '7px solid #232621' }}
       date={experience.date}
-      iconStyle={{ background: experience.iconBg }}
+      iconStyle={{
+        background: experience.iconBg,
+        boxShadow: `0 0 0 4px ${experience.iconBg}, inset 0 2px 0 rgba(0,0,0,.08), 0 3px 0 4px rgba(0,0,0,.05)`,
+        // backgroundClip: 'content-box',
+      }}
       icon={
-        <div className="flex justify-center items-center w-full h-full">
+        <Box
+        // className="flex justify-center items-center w-full h-full"
+        // clipPath={'circle'}
+        >
           <img
             src={experience.icon}
             alt={experience.company_name}
             className="w-[60%] h-[60%] object-contain"
           />
-        </div>
+        </Box>
       }
     >
       <div>
@@ -64,8 +72,8 @@ const About = () => {
       display={'flex'}
       justifyContent={'center'}
       w={'100%'}
-      h={'100%'}
-      mt={{ base: '30px', lg: 'unset' }}
+      // h={'100%'}
+      mt={{ base: '30px', lg: '50px' }}
     >
       <Flex
         as={motion.div}
@@ -141,11 +149,13 @@ const About = () => {
             delivering high-quality results and fostering a culture of
             continuous improvement.
           </Text>
-          <VerticalTimeline>
-            {experiences.map((experience, idx) => (
-              <ExperienceCard key={idx} experience={experience} />
-            ))}
-          </VerticalTimeline>
+          <Flex marginTop={'20px'} flexDir={'col'}>
+            <VerticalTimeline>
+              {experiences.map((experience, idx) => (
+                <ExperienceCard key={idx} experience={experience} />
+              ))}
+            </VerticalTimeline>
+          </Flex>
         </Box>
 
         <PageLoader />
