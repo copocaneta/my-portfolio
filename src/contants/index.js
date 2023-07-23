@@ -18,7 +18,7 @@ const experiences = [
     title: 'Fullstack engineer',
     company_name: 'Crowdform',
     icon: crowdform,
-    iconBg: '#383E56',
+    iconBg: '#000000',
     date: 'November 2021 - July 2022',
     points: [
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
@@ -31,7 +31,7 @@ const experiences = [
     title: 'Sr Fullstack Lead engineer',
     company_name: 'Crowdform',
     icon: crowdform,
-    iconBg: '#E6DEDD',
+    iconBg: '#000000',
     date: 'July 2022 - November 2022',
     points: [
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
@@ -44,7 +44,7 @@ const experiences = [
     title: 'Techlead',
     company_name: 'Crowdform',
     icon: crowdform,
-    iconBg: '#383E56',
+    iconBg: '#000000',
     date: 'November 2022 - current date',
     points: [
       'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.',
