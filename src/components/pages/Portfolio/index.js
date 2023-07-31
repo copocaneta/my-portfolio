@@ -3,18 +3,10 @@ import { projects } from '../../../constants';
 import { Tilt } from 'react-tilt';
 import { github } from '../../../assets';
 import PageLoader from '../../PageLoader';
-import {
-  Box,
-  Grid,
-  GridItem,
-  Text,
-  Flex,
-  Image,
-  useTheme,
-} from '@chakra-ui/react';
-import { motion, useAnimationControls } from 'framer-motion';
+import { Box, Grid, GridItem, Text, Flex, Image } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
-import { fadeIn, textVariant } from '../../../utils/motion';
+import { fadeIn } from '../../../utils/motion';
 
 const ProjectCard = ({
   idx,
@@ -27,8 +19,6 @@ const ProjectCard = ({
   return (
     <Flex
       as={motion.div}
-      // width={'200px'}
-      // flex={{ base: 1 }}
       flexBasis={{ base: '100%', md: 'calc((100%/3) - 12px)' }}
       variants={fadeIn('up', 'spring', idx * 0.5, 0.75)}
     >
@@ -39,7 +29,6 @@ const ProjectCard = ({
           scale: 1,
           speed: 450,
         }}
-        // className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
         padding={5}
         rounded={'20px'}
         width={{ base: '200px' }}
@@ -48,7 +37,6 @@ const ProjectCard = ({
           <Image
             src={image}
             alt={name}
-            // className="w-full h-full object-cover rounded-2xl"
             width={'100%'}
             objectFit={'cover'}
             height={'100%'}
@@ -64,7 +52,6 @@ const ProjectCard = ({
           >
             <Flex
               onClick={() => window.open(sourceCodeLink, '_blank')}
-              // className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
               background={'black'}
               width={10}
               height={10}
@@ -73,42 +60,19 @@ const ProjectCard = ({
               alignItems={'center'}
               cursor={'pointer'}
             >
-              <Image
-                src={github}
-                alt="github"
-                // className="w-1/2 h-1/2 object-contain"
-              />
+              <Image src={github} alt="github" />
             </Flex>
           </Flex>
         </Box>
-        <Box
-          marginTop={5}
-          // className=" mt-5"
-        >
-          <Text
-            as={'h3'}
-            color={'white'}
-            fontWeight={'bold'}
-            fontSize={'24px'}
-            // className="text-white font-bold text-[24px]"
-          >
+        <Box marginTop={5}>
+          <Text as={'h3'} color={'white'} fontWeight={'bold'} fontSize={'24px'}>
             {name}
           </Text>
-          <Text
-            marginTop={2}
-            fontSize={'14px'}
-            color={'white'}
-            // className="mt-2 text-secondary text-[14px]"
-          >
+          <Text marginTop={2} fontSize={'14px'} color={'white'}>
             {description}
           </Text>
         </Box>
-        <Flex
-          marginTop={4}
-          flexWrap={'wrap'}
-          gap={2}
-          // className="mt-4 flex flex-wrap gap-2 "
-        >
+        <Flex marginTop={4} flexWrap={'wrap'} gap={2}>
           {tags.map((tag, idx) => (
             <Text key={tag.name} color={tag.color} fontSize={'14px'}>
               #{tag.name}
@@ -121,8 +85,6 @@ const ProjectCard = ({
 };
 
 const Portfolio = () => {
-  const theme = useTheme();
-
   return (
     <>
       <Box
