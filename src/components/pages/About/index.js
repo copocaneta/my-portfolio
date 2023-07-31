@@ -1,13 +1,11 @@
 import { Box, Flex, Grid, GridItem, Text } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
 import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
 import { experiences } from '../../../constants';
 import { pageVariants } from '../../../utils/page-transition';
-import AnimatedLetters from '../../AnimatedLetters';
 import PageLoader from '../../PageLoader';
 import './index.scss';
 import 'react-vertical-timeline-component/style.min.css';
@@ -24,10 +22,7 @@ const ExperienceCard = ({ experience }) => {
         // backgroundClip: 'content-box',
       }}
       icon={
-        <Box
-        // className="flex justify-center items-center w-full h-full"
-        // clipPath={'circle'}
-        >
+        <Box>
           <img
             src={experience.icon}
             alt={experience.company_name}
