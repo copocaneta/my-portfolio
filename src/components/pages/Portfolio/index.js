@@ -1,60 +1,127 @@
 import './index.scss';
-import AnimatedLetters from '../../AnimatedLetters';
-import { useEffect, useState } from 'react';
+import { projects } from '../../../constants';
+import { Tilt } from 'react-tilt';
+import { github } from '../../../assets';
 import PageLoader from '../../PageLoader';
 import {
-  AspectRatio,
   Box,
-  Button,
   Grid,
   GridItem,
-  Image,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   Text,
-  useDisclosure,
+  Flex,
+  Image,
   useTheme,
 } from '@chakra-ui/react';
 import { motion, useAnimationControls } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
-import { portfolioMockData } from './mock-data';
-import PortfolioCardItem from './portfiolio-card';
+import { fadeIn, textVariant } from '../../../utils/motion';
+
+const ProjectCard = ({
+  idx,
+  name,
+  description,
+  tags,
+  image,
+  source_code_link: sourceCodeLink,
+}) => {
+  return (
+    <Flex
+      as={motion.div}
+      // width={'200px'}
+      // flex={{ base: 1 }}
+      flexBasis={{ base: '100%', md: 'calc((100%/3) - 12px)' }}
+      variants={fadeIn('up', 'spring', idx * 0.5, 0.75)}
+    >
+      <Tilt
+        as={Box}
+        options={{
+          max: 45,
+          scale: 1,
+          speed: 450,
+        }}
+        // className="bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full"
+        padding={5}
+        rounded={'20px'}
+        width={{ base: '200px' }}
+      >
+        <Box position={'relative'} height={'230px'}>
+          <Image
+            src={image}
+            alt={name}
+            // className="w-full h-full object-cover rounded-2xl"
+            width={'100%'}
+            objectFit={'cover'}
+            height={'100%'}
+            rounded={'20px'}
+          />
+          <Flex
+            position={'absolute'}
+            top={'5px'}
+            right={'5px'}
+            width={'100%'}
+            justifyContent={'flex-end'}
+            className="card-img_hover"
+          >
+            <Flex
+              onClick={() => window.open(sourceCodeLink, '_blank')}
+              // className="black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
+              background={'black'}
+              width={10}
+              height={10}
+              rounded={'full'}
+              justifyContent={'center'}
+              alignItems={'center'}
+              cursor={'pointer'}
+            >
+              <Image
+                src={github}
+                alt="github"
+                // className="w-1/2 h-1/2 object-contain"
+              />
+            </Flex>
+          </Flex>
+        </Box>
+        <Box
+          marginTop={5}
+          // className=" mt-5"
+        >
+          <Text
+            as={'h3'}
+            color={'white'}
+            fontWeight={'bold'}
+            fontSize={'24px'}
+            // className="text-white font-bold text-[24px]"
+          >
+            {name}
+          </Text>
+          <Text
+            marginTop={2}
+            fontSize={'14px'}
+            color={'white'}
+            // className="mt-2 text-secondary text-[14px]"
+          >
+            {description}
+          </Text>
+        </Box>
+        <Flex
+          marginTop={4}
+          flexWrap={'wrap'}
+          gap={2}
+          // className="mt-4 flex flex-wrap gap-2 "
+        >
+          {tags.map((tag, idx) => (
+            <Text key={tag.name} color={tag.color} fontSize={'14px'}>
+              #{tag.name}
+            </Text>
+          ))}
+        </Flex>
+      </Tilt>
+    </Flex>
+  );
+};
 
 const Portfolio = () => {
-  const [letterClass, setLetterClass] = useState('text-animate');
   const theme = useTheme();
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  const [modalData, setModalData] = useState(null);
-  const [firstLoad, setFirstLoad] = useState(true);
-
-  const controls = useAnimationControls();
-
-  const startPortAnimation = () => {
-    controls.start((idx) => ({
-      scale: 1.0,
-      transition: { delay: 0.1 * idx },
-    }));
-  };
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLetterClass('text-animate-hover');
-    }, 3000);
-    setTimeout(() => {
-      startPortAnimation();
-      setFirstLoad(false);
-    }, 2000);
-  });
 
   return (
     <>
@@ -82,161 +149,41 @@ const Portfolio = () => {
             flexDirection={'column'}
             justifyContent={'center'}
           >
-            <h1>
-              <AnimatedLetters
-                strArr={'Portfolio'.split('')}
-                idx={15}
-                letterClass={letterClass}
-              />
-            </h1>
+            <Text
+              as="h2"
+              color={{
+                base: 'white',
+              }}
+              fontSize={'18px'}
+              fontWeight={'thin'}
+            >
+              Some of my work
+            </Text>
+            <Text
+              as="h1"
+              color={{
+                base: 'white',
+              }}
+              fontSize={'48px'}
+              fontWeight={'extrabold'}
+            >
+              Projects
+            </Text>
             <Text as={'p'}>
               This is where I will list some of my most recent work. Not
               everything I did will be here since most is under non disclosure
               agreements with the companies I work for or have worked in the
               past.
             </Text>
-            <Box
-              as={motion.div}
-              initial={{
-                opacity: 0,
-              }}
-              animate={{
-                opacity: 1,
-                transition: { delay: 1.5, duration: 2.5 },
-              }}
-              my={'50px'}
-              border={'1px solid #ddd'}
-              rounded={30}
-              padding={5}
-            >
-              <Tabs isLazy={true} isFitted variant="soft-rounded">
-                <TabList mb="1em">
-                  <Tab
-                    _selected={{
-                      color: 'white',
-                      bg: theme.colors.altColorLight,
-                    }}
-                  >
-                    <Text as="span" fontSize="2xl">
-                      🛠 Frontend
-                    </Text>
-                  </Tab>
-                  <Tab
-                    _selected={{
-                      color: 'white',
-                      bg: theme.colors.altColorLight,
-                    }}
-                  >
-                    <Text as="span" fontSize="2xl">
-                      🧰 Backend
-                    </Text>
-                  </Tab>
-                </TabList>
-                <TabPanels>
-                  <TabPanel>
-                    <Box>
-                      <Grid
-                        gap={10}
-                        templateColumns={{
-                          base: 'minmax(100px, 1fr)',
-                          lg: '1fr 1fr 1fr',
-                        }}
-                      >
-                        {portfolioMockData.frontend.map((item, idx) => {
-                          return (
-                            <GridItem key={idx}>
-                              <PortfolioCardItem
-                                orderOnPage={'first'}
-                                item={item}
-                                idx={idx}
-                                controls={controls}
-                                startPortAnimation={startPortAnimation}
-                                firstLoad={firstLoad}
-                                onOpen={onOpen}
-                                setModalData={setModalData}
-                              />
-                            </GridItem>
-                          );
-                        })}
-                      </Grid>
-                    </Box>
-                  </TabPanel>
-                  <TabPanel>
-                    <Box>
-                      <Grid
-                        gap={10}
-                        templateColumns={{
-                          base: 'minmax(100px, 1fr)',
-                          lg: '1fr 1fr 1fr',
-                        }}
-                      >
-                        {portfolioMockData.backend.map((item, idx) => {
-                          return (
-                            <GridItem key={idx}>
-                              <PortfolioCardItem
-                                orderOnPage={'second'}
-                                item={item}
-                                // idx={idx}
-                                controls={controls}
-                                startPortAnimation={startPortAnimation}
-                                firstLoad={firstLoad}
-                                onOpen={onOpen}
-                                setModalData={setModalData}
-                              />
-                            </GridItem>
-                          );
-                        })}
-                      </Grid>
-                    </Box>
-                  </TabPanel>
-                </TabPanels>
-              </Tabs>
-            </Box>
+            <Flex marginTop={'20px'} gap={7} flexWrap={'wrap'}>
+              {projects.map((project, idx) => (
+                <ProjectCard key={`project-${idx}`} {...project} idx={idx} />
+              ))}
+            </Flex>
           </GridItem>
         </Grid>
         <PageLoader />
       </Box>
-      <Modal
-        isOpen={isOpen}
-        onClose={onClose}
-        isCentered
-        // size={'xl'}
-        rounded={30}
-      >
-        <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
-        <ModalContent rounded={'20px'}>
-          <ModalHeader>
-            <Text as="span" color="black">
-              {modalData?.name}
-            </Text>
-          </ModalHeader>
-          <ModalCloseButton />
-          <ModalBody>
-            <Box>
-              {console.log(modalData?.image)}
-              <AspectRatio ratio={16 / 9} marginBottom={'20px'}>
-                <Image
-                  src={
-                    modalData &&
-                    require(`../../../assets/images/${modalData?.image}`)
-                  }
-                  rounded={30}
-                />
-              </AspectRatio>
-
-              <Text as="span" color="black">
-                {modalData?.description}
-              </Text>
-            </Box>
-          </ModalBody>
-
-          <ModalFooter>
-            <Button colorScheme="blue" mr={3} onClick={onClose}>
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
     </>
   );
 };
