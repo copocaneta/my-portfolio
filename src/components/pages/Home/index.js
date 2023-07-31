@@ -11,13 +11,7 @@ const Home = () => {
   const stageCanvasRef = useRef(null);
 
   return (
-    <Box
-      display={'flex'}
-      justifyContent={'center'}
-      w={'100%'}
-      h={'100%'}
-      backgroundImage={require('../../../assets/images/herobg.png')}
-    >
+    <Box display={'flex'} justifyContent={'center'} w={'100%'} h={'100%'}>
       <Box
         as={motion.div}
         variants={pageVariants}
@@ -26,6 +20,7 @@ const Home = () => {
         exit="out"
         className="container home-page"
         w={'100%'}
+        backgroundImage={require('../../../assets/images/herobg.png')}
       >
         <Flex
           zIndex={999998}
