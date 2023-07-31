@@ -5,7 +5,7 @@ import {
   VerticalTimeline,
   VerticalTimelineElement,
 } from 'react-vertical-timeline-component';
-import { experiences } from '../../../contants';
+import { experiences } from '../../../constants';
 import { pageVariants } from '../../../utils/page-transition';
 import AnimatedLetters from '../../AnimatedLetters';
 import PageLoader from '../../PageLoader';
@@ -60,13 +60,6 @@ const ExperienceCard = ({ experience }) => {
 };
 
 const About = () => {
-  const [letterClass, setLetterClass] = useState('text-animate');
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLetterClass('text-animate-hover');
-    }, 3000);
-  }, []);
   return (
     <Box
       display={'flex'}
