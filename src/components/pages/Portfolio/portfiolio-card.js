@@ -1,7 +1,6 @@
 import { AddIcon, InfoIcon } from '@chakra-ui/icons';
 import {
   AspectRatio,
-  background,
   Box,
   Button,
   HStack,
@@ -10,7 +9,6 @@ import {
   TagLabel,
   TagLeftIcon,
   Text,
-  theme,
   useTheme,
 } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
@@ -31,11 +29,16 @@ const PortfolioCardItem = ({
   const theme = useTheme();
   return (
     <Flippy
-      flipOnHover={true} // default false
+      flipOnHover={{ base: false, lg: true }} // default false
+      flipOnClick={{ base: false, lg: true }}
       flipDirection="horizontal" // horizontal or vertical
       ref={ref} // to use toggle method like ref.curret.toggle()
       // if you pass isFlipped prop component will be controlled component.
       // and other props, which will go to div
+      onClick={() => {
+        onOpen();
+        setModalData(item);
+      }}
     >
       <Box as={FrontSide} p={0} rounded={30}>
         <Box
@@ -80,7 +83,7 @@ const PortfolioCardItem = ({
             </Button>
           </AspectRatio>
           <Box mt={'11px'} mx={'15px'}>
-            <Text as="span" color="black">
+            <Text as="span" color="black" isTruncated>
               <strong>{item.name}</strong>
             </Text>
             <HStack my={4} spacing={4}>

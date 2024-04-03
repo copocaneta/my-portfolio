@@ -6,9 +6,9 @@ const CodeBrackets = () => {
       className="wrap floating-elements"
       position={{ base: 'absolute' }}
       top={'-49px'}
-      left={{ base: 0, lg: '50%' }}
-      height={{ base: 'calc(100vh - 90px)', lg: 'inherit' }}
-      width={{ base: '92vw', lg: '50%' }}
+      left={{ base: 0, md: '50%' }}
+      height={{ base: 'calc(100vh - 90px)', md: 'inherit' }}
+      width={{ base: '92vw', md: '50%' }}
       overflow={{ base: 'hidden' }}
     >
       {/* react */}
@@ -82,8 +82,8 @@ const CodeBrackets = () => {
       {/* typescript */}
       <svg
         class="svg"
-        width="110px"
-        height="110px"
+        width="70px"
+        height="70px"
         viewBox="0 0 256 256"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
