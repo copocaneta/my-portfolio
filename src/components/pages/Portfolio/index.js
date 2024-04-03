@@ -132,7 +132,10 @@ const Portfolio = () => {
                   <Box>
                     <Grid
                       gap={10}
-                      templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
+                      templateColumns={{
+                        base: 'minmax(100px, 1fr)',
+                        lg: '1fr 1fr 1fr',
+                      }}
                     >
                       {portfolioMockData.frontend.map((item, idx) => {
                         console.log();
@@ -158,7 +161,10 @@ const Portfolio = () => {
                   <Box>
                     <Grid
                       gap={10}
-                      templateColumns={{ base: '1fr', lg: '1fr 1fr 1fr' }}
+                      templateColumns={{
+                        base: 'minmax(100px, 1fr)',
+                        lg: '1fr 1fr 1fr',
+                      }}
                     >
                       {portfolioMockData.backend.map((item, idx) => {
                         return (
