@@ -7,7 +7,7 @@ import CodeBrackets from '../../CodeBrackets';
 import PageLoader from '../../PageLoader';
 import { motion } from 'framer-motion';
 import { pageVariants } from '../../../utils/page-transition';
-import mycv from '../../../assets/cv/resume_thiago_bernardi.pdf';
+// import mycv from '../../../assets/cv/resume_thiago_bernardi.pdf';
 
 const Home = () => {
   const theme = useTheme();
@@ -60,7 +60,7 @@ const Home = () => {
             >
               CONTACT ME
             </Button>
-            <Button
+            {/* <Button
               as={'a'}
               download={'My Resume'}
               href={mycv}
@@ -77,7 +77,7 @@ const Home = () => {
               }}
             >
               DOWNLOAD CV
-            </Button>
+            </Button> */}
           </Box>
         </GridItem>
         <GridItem
