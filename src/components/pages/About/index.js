@@ -52,33 +52,32 @@ const About = () => {
           </h1>
           <Box display={'flex'} gap={'15px'} flexDir={'column  '}>
             <Text>
-              Hello there, I am Thiago Bernardi, a Full Stack developer from São
-              Paulo Brazil, I've been working with web development, specially
-              frontend development since 2001, I've started with simple HTML and
-              CSS then moved to ASP 1.0 and then to PHP. I've also programmed on
-              Python doing backend and automation tasks mostly for the web
-              hosting industry.
+              Hello, I'm Thiago Bernardi, a Full Stack Engineer with extensive
+              experience in web development, currently thriving as a Tech Lead.
+              My tech journey began in 2001, developing skills across ASP, PHP,
+              and Python for backend development and automation. I have a
+              balanced expertise in web development, proficient in using React
+              and NodeJS to create comprehensive web solutions.
             </Text>
             <Text>
-              I also have experience with Django and Flask (Python frameworks)
-              but my passion is for JavaScript and this is where i thrive and
-              concentrate the latest years of my web development career. I've
-              been programming on NodeJS for Rest APIs using Express, NestJS or
-              sometimes frameworks like Strapi or Sanity.
+              With years of experience as a DevOps engineer, I've mastered the
+              art of optimizing development pipelines, enhancing operational
+              efficiency, and deploying scalable cloud infrastructures. My
+              commitment to maintaining high-quality standards is evident in my
+              practice of Test Driven Development (TDD).
             </Text>
             <Text>
-              On the frontend I've been using React and its frameworks such as
-              Gatsby and NextJS. I have extensive knowledge on CSS and follow
-              the best coding practices such as clean code and Test Driven
-              Development (Jest and React Testing Library). Lately I've been
-              working a lot with Web3, joining JavaScript with blockchains dapps
-              by using libraries such as Moralis and Alchemy.
+              In recent years, I have led a variety of innovative projects,
+              notably in AI and Web3 sectors, where I utilized my JavaScript
+              expertise to drive advancements in blockchain technology and AI
+              applications.
             </Text>
 
             <Text>
-              Lately I've been working as a Full Stack engineer in a London
-              based web3 venture builder company and have been helping them
-              build several projects that innovated the Web3 scene.
+              As a Tech Lead, I've spearheaded the development of cutting-edge
+              projects across both AI and Web3 domains, demonstrating my ability
+              to lead diverse and pioneering initiatives in the fast-paced tech
+              industry.
             </Text>
           </Box>
         </GridItem>
