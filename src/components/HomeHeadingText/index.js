@@ -25,6 +25,7 @@ const HomeHeadingText = () => {
         <TypewriterComponent
           options={{
             stringSplitter,
+            skipAddStyles: true,
           }}
           onInit={(typewriter) => {
             typewriter

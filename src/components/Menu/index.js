@@ -31,7 +31,7 @@ const Sidebar = () => {
       display={'flex'}
       flexDirection={{ base: 'row', lg: 'column' }}
       justifyContent={'space-between'}
-      zIndex={4}
+      zIndex={9999}
     >
       {/* Logo */}
       <Link as={ReactLink} className="logo" to="/" padding={'8px 0'}>

@@ -5,8 +5,13 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { ChakraProvider, Container, extendTheme } from '@chakra-ui/react';
+import Div100vh from 'react-div-100vh';
 
 const theme = extendTheme({
+  fonts: {
+    body: `'Poppins', sans-serif`,
+    heading: `'Poppins', sans-serif`,
+  },
   styles: {
     global: {
       // styles for the `body`
@@ -15,7 +20,8 @@ const theme = extendTheme({
       // },
       body: {
         background: 'grey.100',
-        color: 'black',
+        color: 'textColorLight',
+        fontSize: '14px',
         height: '100%',
       },
       // styles for the `a`
@@ -49,9 +55,12 @@ root.render(
   // <React.StrictMode>
   <ChakraProvider theme={theme}>
     <Container
+      as={Div100vh}
       maxW={'100%'}
       width={'100%'}
-      height={'100vh'}
+      // height={{ base: 'calc(90vh)', lg: 'calc(100vh)' }}
+      // minH={{ lg: 'calc(100vh)' }}
+      // maxH={'calc(100vh)'}
       m={0}
       p={0}
       overflow={'hidden'}
