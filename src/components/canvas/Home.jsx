@@ -19,7 +19,7 @@ const Scene = ({ parentRef }) => {
   const { setSize } = useThree();
   const [isVisible, setVisible] = useState(false);
   
-  const computer = useGLTF('./copocaneta_setup/copocaneta_setup.gltf');
+  const computer = useGLTF('./copocaneta_setup/test.glb');
   const memoizedComputer = useMemo(() => computer, [computer]);
 
   const handleResize = useCallback(() => {
@@ -74,13 +74,29 @@ const Scene = ({ parentRef }) => {
     <>
       {isVisible && (
         <mesh>
-          <hemisphereLight intensity={0.15} groundColor="black" />
-          <pointLight intensity={1} />
+          <hemisphereLight intensity={0.5} groundColor="#000000" />
+          {/* Front lights */}
+          <pointLight intensity={1.5} position={[0, 5, 10]} />
+          <pointLight intensity={1.5} position={[0, -5, 10]} />
+          
+          {/* Side lights */}
+          <pointLight intensity={1.5} position={[10, 0, 0]} />
+          <pointLight intensity={1.5} position={[-10, 0, 0]} />
+          
+          {/* Top and bottom lights */}
+          <pointLight intensity={1.5} position={[0, 10, 0]} />
+          <pointLight intensity={1.5} position={[0, -10, 0]} />
+          
+          {/* Back light */}
+          <pointLight intensity={1} position={[0, 0, -10]} />
+          
+          <ambientLight intensity={0.7} />
+          
           <spotLight
             position={[-20, 50, 10]}
-            angle={0.12}
-            penumbra={1}
-            intensity={1}
+            angle={0.3}
+            penumbra={0.5}
+            intensity={1.5}
             castShadow
             shadow-mapSize={1024}
           />
@@ -88,9 +104,9 @@ const Scene = ({ parentRef }) => {
             <primitive
               object={memoizedComputer.scene}
               onClick={(e) => console.log('you clicked', e.object.name)}
-              scale={0.95}
-              position={[0, -4.25, -1.5]}
-              rotation={[-0.01, -0.2, -0.1]}
+              scale={5}
+              position={[0, -2, 0]}
+              rotation={[0, Math.PI, 0]}
             />
           </animated.group>
         </mesh>
@@ -110,14 +126,15 @@ const Home = ({ parentRef }) => {
     <Canvas
       frameloop="demand"
       shadows
-      camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [0, 2, 20], fov: 35 }}
       gl={{ preserveDrawingBuffer: true }}
     >
       <Suspense fallback={<CanvasLoader insideCanvas={true} />}>
         <OrbitControls
-          enableZoom={false}
+          enableZoom={true}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
+          enablePan={true}
         />
         <Scene parentRef={parentRef} />
       </Suspense>
