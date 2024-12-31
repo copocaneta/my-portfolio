@@ -23,6 +23,8 @@ const Sidebar = () => {
 
   return (
     <GridItem
+      role="navigation"
+      aria-label="Main navigation"
       w={{ base: '100%', lg: '68px' }}
       background={theme.colors.navBarBgLight}
       height={{ base: '90px', lg: '100%' }}
@@ -34,7 +36,13 @@ const Sidebar = () => {
       zIndex={9999}
     >
       {/* Logo */}
-      <Link as={ReactLink} className="logo" to="/" padding={'8px 0'}>
+      <Link
+        as={ReactLink}
+        to="/"
+        aria-label="Home"
+        className="logo"
+        padding={'8px 0'}
+      >
         <Image
           display={'block'}
           margin={{ base: '8px 15px', lg: '8px auto' }}

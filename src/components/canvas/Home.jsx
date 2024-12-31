@@ -1,5 +1,5 @@
-import React, { Suspense, useEffect, useState } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import React, { Suspense, useEffect, useState, useMemo, useCallback } from 'react';
+import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 import CanvasLoader from '../Loader';
 import { useSpring, animated } from '@react-spring/three';
@@ -9,23 +9,31 @@ Globals.assign({
   frameLoop: 'always',
 });
 
-const Home = ({ parentRef }) => {
-  const { setSize, size } = useThree();
+const ErrorComponent = ({ message }) => (
+  <div style={{ color: 'red', padding: '20px' }}>
+    Error: {message}
+  </div>
+);
+
+const Scene = ({ parentRef }) => {
+  const { setSize } = useThree();
   const [isVisible, setVisible] = useState(false);
+  
+  const computer = useGLTF('./copocaneta_setup/copocaneta_setup.gltf');
+  const memoizedComputer = useMemo(() => computer, [computer]);
+
+  const handleResize = useCallback(() => {
+    if (parentRef.current) {
+      let height = parentRef.current.offsetHeight;
+      let width = parentRef.current.offsetWidth;
+      setSize(width, height);
+    }
+  }, [parentRef, setSize]);
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      console.log(`This is the size: ${JSON.stringify(size)}`);
-      if (parentRef.current) {
-        let height = parentRef.current.offsetHeight;
-        let width = parentRef.current.offsetWidth;
-        console.log(`This is the ref size: ${width} and ${height}`);
-        setSize(width, height);
-        deskRotation.finish();
-        setVisible(true);
-      }
-    }, 200);
+    const timer = setTimeout(handleResize, 200);
     return () => clearTimeout(timer);
-  }, []);
+  }, [handleResize]);
 
   const { deskRotation } = useSpring({
     from: {
@@ -49,10 +57,21 @@ const Home = ({ parentRef }) => {
     immediate: true,
   });
 
-  const computer = useGLTF('./copocaneta_setup/copocaneta_setup.gltf');
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (parentRef.current) {
+        let height = parentRef.current.offsetHeight;
+        let width = parentRef.current.offsetWidth;
+        setSize(width, height);
+        deskRotation.finish();
+        setVisible(true);
+      }
+    }, 200);
+    return () => clearTimeout(timer);
+  }, [parentRef, setSize, deskRotation]);
+
   return (
     <>
-      {console.log(`isVisible: ${isVisible}`)}
       {isVisible && (
         <mesh>
           <hemisphereLight intensity={0.15} groundColor="black" />
@@ -67,7 +86,7 @@ const Home = ({ parentRef }) => {
           />
           <animated.group rotation-y={deskRotation}>
             <primitive
-              object={computer.scene}
+              object={memoizedComputer.scene}
               onClick={(e) => console.log('you clicked', e.object.name)}
               scale={0.95}
               position={[0, -4.25, -1.5]}
@@ -80,26 +99,31 @@ const Home = ({ parentRef }) => {
   );
 };
 
-const HomeCanvas = ({ parentRef }) => {
+const Home = ({ parentRef }) => {
+  const [error] = useState(null);
+
+  if (error) {
+    return <ErrorComponent message={error.message} />;
+  }
+
   return (
     <Canvas
       frameloop="demand"
       shadows
       camera={{ position: [20, 3, 5], fov: 25 }}
       gl={{ preserveDrawingBuffer: true }}
-      // concurrent
     >
-      <Suspense fallback={<CanvasLoader />}>
+      <Suspense fallback={<CanvasLoader insideCanvas={true} />}>
         <OrbitControls
           enableZoom={false}
           maxPolarAngle={Math.PI / 2}
           minPolarAngle={Math.PI / 2}
         />
-        <Home parentRef={parentRef} />
+        <Scene parentRef={parentRef} />
       </Suspense>
       <Preload all />
     </Canvas>
   );
 };
 
-export default HomeCanvas;
+export default Home;

@@ -172,4 +172,17 @@ const testimonials = [
   },
 ];
 
+export const ROUTES = {
+  HOME: '/',
+  ABOUT: '/about',
+  PORTFOLIO: '/portfolio',
+  CONTACT: '/contact',
+};
+
+export const BREAKPOINTS = {
+  MOBILE: '320px',
+  TABLET: '768px',
+  DESKTOP: '1024px',
+};
+
 export { projects, experiences, testimonials };

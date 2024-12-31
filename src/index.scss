@@ -21,18 +21,23 @@
   src: url('./assets/fonts/Poppins-Regular.ttf') format('ttf');
 }
 
-html {
-  font-size: 62.5%;
+:root {
+  --primary-color: #416788;
+  --secondary-color: #4d148c;
+  --accent-color: #ff6600;
+  // ... other variables
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  //   color: #444;
-  //   background-color: $background-light;
-  //   overflow: hidden;
-  //   display: block;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
 }
 
 h1 {
