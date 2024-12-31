@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState, useMemo, useCallback } from 'react';
+import React, { Suspense, useEffect, useState, useMemo, useCallback, useRef } from 'react';
 import { Canvas, useThree } from '@react-three/fiber';
 import { OrbitControls, Preload, useGLTF } from '@react-three/drei';
 import CanvasLoader from '../Loader';
@@ -18,43 +18,28 @@ const ErrorComponent = ({ message }) => (
 const Scene = ({ parentRef }) => {
   const { setSize } = useThree();
   const [isVisible, setVisible] = useState(false);
+  const [isInitialSpin, setIsInitialSpin] = useState(true);
   
   const computer = useGLTF('./copocaneta_setup/test.glb');
   const memoizedComputer = useMemo(() => computer, [computer]);
 
-  const handleResize = useCallback(() => {
-    if (parentRef.current) {
-      let height = parentRef.current.offsetHeight;
-      let width = parentRef.current.offsetWidth;
-      setSize(width, height);
-    }
-  }, [parentRef, setSize]);
-
-  useEffect(() => {
-    const timer = setTimeout(handleResize, 200);
-    return () => clearTimeout(timer);
-  }, [handleResize]);
-
   const { deskRotation } = useSpring({
     from: {
-      deskRotation: Math.PI / 7,
+      deskRotation: 0,
     },
-    to: [
-      {
-        deskRotation: -Math.PI / 7,
-      },
-      {
-        deskRotation: Math.PI / 7,
-      },
-    ],
+    to: async (next) => {
+      while (true) {
+        await next({
+          deskRotation: deskRotation.get() + Math.PI * 2,
+        });
+      }
+    },
     config: {
-      mass: 5,
-      tension: 400,
-      friction: 50,
-      duration: 25000,
+      duration: isInitialSpin ? 200 : 8000,
+      precision: 0.0001,
+      easing: t => t,
     },
-    loop: true,
-    immediate: true,
+    immediate: false,
   });
 
   useEffect(() => {
@@ -63,12 +48,15 @@ const Scene = ({ parentRef }) => {
         let height = parentRef.current.offsetHeight;
         let width = parentRef.current.offsetWidth;
         setSize(width, height);
-        deskRotation.finish();
         setVisible(true);
+        setIsInitialSpin(true);
+        setTimeout(() => {
+          setIsInitialSpin(false);
+        }, 1000);
       }
     }, 200);
     return () => clearTimeout(timer);
-  }, [parentRef, setSize, deskRotation]);
+  }, [parentRef, setSize, setIsInitialSpin]);
 
   return (
     <>
@@ -104,7 +92,7 @@ const Scene = ({ parentRef }) => {
             <primitive
               object={memoizedComputer.scene}
               onClick={(e) => console.log('you clicked', e.object.name)}
-              scale={5}
+              scale={7}
               position={[0, -2, 0]}
               rotation={[0, Math.PI, 0]}
             />
