@@ -1,0 +1,17 @@
+my-portfolio/
+├── public/
+│   └── your-model.glb
+├── src/
+│   ├── components/
+│   │   ├── Navbar.jsx
+│   │   ├── Hero.jsx
+│   │   ├── About.jsx
+│   │   ├── Expertise.jsx
+│   │   ├── Experience.jsx
+│   │   ├── Blog.jsx
+│   │   ├── Connect.jsx
+│   │   └── Footer.jsx
+│   ├── theme/
+│   │   └── theme.js
+│   ├── App.jsx
+│   └── main.jsx 
