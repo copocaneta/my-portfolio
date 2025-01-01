@@ -8,10 +8,10 @@ const theme = extendTheme({
   styles: {
     global: (props) => ({
       body: {
-        bg: props.colorMode === 'dark' ? '#121212' : '#ffffff',
-        color: props.colorMode === 'dark' ? '#FFFFFF' : '#121212',
-      },
-    }),
+        bg: props.colorMode === 'dark' ? '#1A202C' : '#FFFFFF',
+        color: props.colorMode === 'dark' ? '#FFFFFF' : '#1A202C',
+      }
+    })
   },
   fonts: {
     heading: 'Roboto, sans-serif',
@@ -19,11 +19,19 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      primary: '#6B46C1',
+      primary: '#805AD5',
       secondary: '#9F7AEA',
       accent: '#B794F4',
     },
   },
+  components: {
+    Container: {
+      baseStyle: {
+        maxW: '736px',
+        px: { base: '4', md: '6' },
+      }
+    }
+  }
 });
 
 export default theme; 

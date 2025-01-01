@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text, Button, Stack, VStack } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, Button, Stack, VStack, useColorModeValue } from '@chakra-ui/react'
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF } from '@react-three/drei'
 import { Suspense, useRef, useEffect } from 'react'
@@ -9,16 +9,20 @@ function Model() {
   const { scene } = useGLTF('/test.glb')
   const modelRef = useRef()
   
-  const rotationSpeed = useRef(2)
+  const rotationSpeed = useRef(4)
+  const MIN_SPEED = 0.2
   
   useFrame((state, delta) => {
-    if (rotationSpeed.current > 0) {
-      modelRef.current.rotation.y += delta * rotationSpeed.current
-      rotationSpeed.current *= 0.98
+    if (rotationSpeed.current > MIN_SPEED) {
+      rotationSpeed.current *= 0.97
+      if (rotationSpeed.current < MIN_SPEED) {
+        rotationSpeed.current = MIN_SPEED
+      }
     }
+    modelRef.current.rotation.y += delta * rotationSpeed.current
   })
   
-  return <primitive ref={modelRef} object={scene} scale={5} position={[0, 0.5, 0]} />
+  return <primitive ref={modelRef} object={scene} scale={5} position={[0, 0, 0]} />
 }
 
 function ModelCanvas() {
@@ -66,6 +70,8 @@ function ModelCanvas() {
 }
 
 export default function Hero() {
+  const textColor = useColorModeValue('gray.800', 'white')
+  
   return (
     <Box
       as="section"
@@ -86,18 +92,19 @@ export default function Hero() {
           <VStack spacing={2} flex="0.6">
             <Heading
               as="h1"
-              size="2xl"
+              size="3xl"
               fontWeight="bold"
               lineHeight="1.2"
+              color={textColor}
             >
               Hi, I'm Thiago Bernardi —
               <br />
-              <Text as="span" color="brand.primary">
+              <Text as="span" color="brand.primary" fontSize="2xl">
                 an Engineering Manager, Mentor, and Tech Enthusiast
               </Text>
             </Heading>
 
-            <Text fontSize="xl" maxW="800px">
+            <Text fontSize="lg" maxW="600px" color={textColor}>
               Passionate about crafting scalable systems and empowering teams to deliver impactful solutions.
             </Text>
           </VStack>
@@ -117,15 +124,15 @@ export default function Hero() {
             flex="0.4"
             w="100%"
             justify="center"
-            mt="-3rem"
+            mt="-4rem"
           >
             <Link to="expertise" smooth={true} duration={500} offset={-70}>
-              <Button size="lg" colorScheme="purple">
+              <Button size="md" colorScheme="purple">
                 Explore My Expertise
               </Button>
             </Link>
             <Button
-              size="lg"
+              size="md"
               variant="outline"
               colorScheme="purple"
               as="a"

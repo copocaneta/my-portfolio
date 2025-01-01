@@ -21,28 +21,34 @@ const ExperienceItem = ({ role, company, period, description }) => (
 export default function Experience() {
   const experiences = [
     {
-      role: 'Engineering Manager',
-      company: 'Bain and Company',
-      period: '2022 - Present',
+      role: 'Expert Manager, Software Engineering',
+      company: 'Bain & Company',
+      period: 'Sep 2024 - Present',
       description: 'Leading engineering teams in delivering innovative solutions, implementing best practices, and fostering a culture of continuous improvement and technical excellence.'
     },
     {
-      role: 'Tech Lead',
+      role: 'Lead Software Engineer',
+      company: 'Cykel AI',
+      period: 'Jan 2023 - Sep 2024',
+      description: 'Led development of AI-powered solutions and scalable architectures, while mentoring team members and establishing robust engineering practices.'
+    },
+    {
+      role: 'Tech Lead & Senior Full Stack Developer',
       company: 'Crowdform',
-      period: '2020 - 2022',
-      description: 'Mentored engineering teams, architected scalable solutions, and established robust development practices while driving technical initiatives.'
+      period: 'Nov 2021 - Sep 2024',
+      description: 'Progressed from Full Stack Developer to Tech Lead, leading multiple development teams, architecting solutions, and implementing best practices. Managed complex projects and mentored junior developers while maintaining hands-on development.'
     },
     {
       role: 'Senior DevOps Engineer',
-      company: 'HostMach',
-      period: '2018 - 2020',
-      description: 'Spearheaded infrastructure automation initiatives, implemented CI/CD pipelines, and optimized deployment processes for large-scale systems.'
+      company: 'Hosting Machine',
+      period: 'Nov 2010 - Sep 2021',
+      description: 'Spearheaded infrastructure automation initiatives over a decade, implementing CI/CD pipelines, and optimizing deployment processes for large-scale systems. Managed critical infrastructure and improved system reliability.'
     },
     {
       role: 'Senior Systems and Web Analyst',
       company: 'HP',
-      period: '2015 - 2018',
-      description: 'Led frontend development efforts and DevOps initiatives, focusing on performance optimization and implementing client-specific solutions.'
+      period: 'Apr 2009 - Jan 2011',
+      description: 'Led frontend development efforts and DevOps initiatives, focusing on performance optimization and implementing client-specific solutions for enterprise-level applications.'
     }
   ]
 
@@ -59,7 +65,7 @@ export default function Experience() {
               Experience Highlights
             </Heading>
             <Text fontSize="lg" color="gray.400">
-              A journey of continuous growth and impact
+              Over 15 years of impactful contributions in software engineering and leadership
             </Text>
           </VStack>
 
