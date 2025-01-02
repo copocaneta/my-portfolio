@@ -109,10 +109,14 @@ function ModelCanvas() {
       <Suspense fallback={null}>
         <Model />
         <OrbitControls
-          enableRotate={false}
+          enableRotate={true}
           enableZoom={false}
           maxPolarAngle={Math.PI / 1.5}
           minPolarAngle={Math.PI / 3}
+          enablePan={false}
+          rotateSpeed={0.5}
+          enableDamping={true}
+          dampingFactor={0.05}
         />
       </Suspense>
     </Canvas>

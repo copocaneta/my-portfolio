@@ -28,6 +28,18 @@ const BrandLogo = () => (
   <HStack 
     spacing={1}
     position="relative"
+    cursor="pointer"
+    as="a"
+    href="/"
+    _hover={{
+      "& .logo-icon": {
+        transform: "rotate(15deg) scale(1.2)",
+      },
+      "& .brand-text": {
+        bgGradient: "linear(to-r, brand.secondary, brand.primary)",
+        letterSpacing: "0.05em"
+      }
+    }}
     _after={{
       content: '""',
       position: 'absolute',
@@ -38,25 +50,22 @@ const BrandLogo = () => (
       bgGradient: "linear(to-r, transparent, brand.primary, transparent)",
     }}
   >
-    <MotionBox
-      whileHover={{ rotate: 15, scale: 1.2 }}
-      transition={{ duration: 0.2 }}
+    <Box
+      className="logo-icon"
       display="flex"
       alignItems="center"
+      transition="transform 0.2s ease"
     >
       <GiSharkFin size="20px" color="#6B46C1" />
-    </MotionBox>
+    </Box>
     <Box
       as="span"
+      className="brand-text"
       fontSize="md"
       fontWeight="bold"
       fontFamily="'Orbitron', sans-serif"
       bgGradient="linear(to-r, brand.primary, brand.secondary)"
       bgClip="text"
-      _hover={{
-        bgGradient: "linear(to-r, brand.secondary, brand.primary)",
-        letterSpacing: "0.05em"
-      }}
       transition="all 0.3s ease"
     >
       Thiago Bernardi
