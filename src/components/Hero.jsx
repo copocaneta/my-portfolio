@@ -89,57 +89,96 @@ export default function Hero() {
           justify="space-between"
           py={2}
         >
-          <VStack spacing={2} flex="0.6">
+          <VStack spacing={1} flex="0.6">
+
             <Heading
               as="h1"
               fontSize={{ base: "4xl", md: "6xl" }}
               fontWeight="900"
-              lineHeight="0.9"
+              lineHeight="1.1"
               color={textColor}
-              letterSpacing="-0.02em"
-              mb={6}
+              letterSpacing="-0.03em"
+              mb={2}
             >
               Hi, I'm{' '}
               <Text
                 as="span"
-                bgGradient="linear(to-r, brand.primary, brand.accent)"
+                position="relative"
+                bgGradient="linear(to-r, brand.primary, brand.accent, brand.secondary)"
                 bgClip="text"
+                bgSize="200% auto"
+                animation="shine 3s ease-in-out infinite"
                 fontFamily="'Orbitron', sans-serif"
                 display="inline-block"
-                transform="translateY(4px)"
+                sx={{
+                  '@keyframes shine': {
+                    'from': { backgroundPosition: '0% center' },
+                    'to': { backgroundPosition: '200% center' }
+                  }
+                }}
               >
                 Thiago Bernardi
               </Text>
             </Heading>
 
-            <Heading
-              fontSize={{ base: "2xl", md: "4xl" }}
-              fontWeight="500"
-              color="whiteAlpha.800"
-              letterSpacing="0.05em"
-              mb={8}
-              fontFamily="'Inter', sans-serif"
-              textTransform="uppercase"
+            <Box
+              position="relative"
+              p={3}
+              mb={2}
+              _before={{
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                borderRadius: 'lg',
+                padding: '2px',
+                background: 'linear-gradient(45deg, brand.primary, brand.accent)',
+                mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                maskComposite: 'exclude',
+              }}
             >
-              an Engineering Manager,
-              <br />
-              <Text 
-                as="span" 
-                color="brand.primary"
-                fontWeight="700"
+              <Heading
+                fontSize={{ base: "xl", md: "3xl" }}
+                fontWeight="500"
+                color="whiteAlpha.900"
+                letterSpacing="0.05em"
+                fontFamily="'Inter', sans-serif"
+                textTransform="uppercase"
               >
-                Mentor & Tech Enthusiast
-              </Text>
-            </Heading>
+                Engineering Manager
+                <br />
+                <Text 
+                  as="span" 
+                  bgGradient="linear(to-r, brand.primary, brand.accent)"
+                  bgClip="text"
+                  fontWeight="800"
+                >
+                  Mentor & Tech Enthusiast
+                </Text>
+              </Heading>
+            </Box>
 
             <Text 
-              fontSize={{ base: "md", md: "xl" }}
+              fontSize={{ base: "md", md: "lg" }}
               maxW="600px" 
               color={textColor}
-              opacity={0.85}
+              opacity={0.9}
               letterSpacing="0.02em"
-              lineHeight="1.8"
-              fontWeight="400"
+              lineHeight="1.6"
+              fontWeight="500"
+              position="relative"
+              mt={1}
+              _after={{
+                content: '""',
+                position: 'absolute',
+                bottom: '-2px',
+                left: '0',
+                width: '100%',
+                height: '1px',
+                background: 'linear-gradient(90deg, transparent, brand.primary, transparent)',
+              }}
             >
               Passionate about crafting scalable systems and empowering teams to deliver impactful solutions.
             </Text>
