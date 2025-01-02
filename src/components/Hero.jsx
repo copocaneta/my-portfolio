@@ -143,7 +143,7 @@ export default function Hero() {
           justify="space-between"
           py={2}
         >
-          <VStack spacing={1} flex="0.6">
+          <VStack spacing={1} flex={{ base: "0.5", md: "0.6" }}>
             <Heading
               as="h1"
               fontSize={{ base: "3xl", md: "5xl" }}
@@ -240,8 +240,8 @@ export default function Hero() {
 
           <Box 
             w="100%" 
-            h={{ base: "280px", md: "380px" }}
-            flex="2.5"
+            h={{ base: "200px", md: "380px" }}
+            flex={{ base: "1.5", md: "2.5" }}
             mt="-4rem"
           >
             <ModelCanvas />
@@ -250,13 +250,14 @@ export default function Hero() {
           <Stack 
             direction={{ base: 'column', md: 'row' }} 
             spacing={4}
-            flex="0.4"
+            flex={{ base: "0.5", md: "0.4" }}
             w="100%"
             justify="center"
-            mt="-4rem"
+            mt={{ base: "-2rem", md: "-4rem" }}
+            mb={{ base: 4, md: 0 }}
           >
             <Link to="expertise" smooth={true} duration={500} offset={-70}>
-              <Button size="md" colorScheme="purple">
+              <Button size="md" colorScheme="purple" w={{ base: "full", md: "auto" }}>
                 Explore My Expertise
               </Button>
             </Link>
@@ -267,6 +268,7 @@ export default function Hero() {
               as="a"
               href="YOUR_DISCORD_LINK"
               target="_blank"
+              w={{ base: "full", md: "auto" }}
             >
               Join Me on Discord
             </Button>

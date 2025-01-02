@@ -6,16 +6,22 @@ const BlogCard = ({ title, description, imageUrl, readTime }) => (
     borderRadius="lg"
     overflow="hidden"
     align="start"
-    transition="all 0.3s"
-    _hover={{ transform: 'translateY(-5px)', bg: 'whiteAlpha.200' }}
+    _hover={{ bg: 'whiteAlpha.200' }}
   >
-    <Image
-      src={imageUrl}
-      alt={title}
-      w="100%"
+    <Box 
+      w="100%" 
       h="200px"
-      objectFit="cover"
-    />
+      overflow="hidden"
+    >
+      <Image
+        src={imageUrl}
+        alt={title}
+        w="100%"
+        h="100%"
+        objectFit="cover"
+        loading="lazy"
+      />
+    </Box>
     <VStack p={6} align="start" spacing={3}>
       <Heading size="md">{title}</Heading>
       <Text color="gray.400" fontSize="sm">{readTime} min read</Text>
@@ -32,19 +38,19 @@ export default function Blog() {
     {
       title: 'System Design Principles for Scalability',
       description: "Learn the key principles behind designing systems that can scale effectively. We'll explore microservices, load balancing, and database optimization strategies.",
-      imageUrl: 'https://source.unsplash.com/1600x900/?server,technology',
+      imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=300&h=169&q=60',
       readTime: 8
     },
     {
       title: 'Kafka in Event-Driven Architectures',
-      description: 'Deep dive into how Kafka can be leveraged in event-driven architectures to build robust and scalable systems.',
-      imageUrl: 'https://source.unsplash.com/1600x900/?data,network',
+      description: 'Exploring the role of Apache Kafka in modern event-driven architectures...',
+      imageUrl: 'https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&w=300&h=169&q=60',
       readTime: 10
     },
     {
       title: 'Engineering Management Tips for Growing Teams',
       description: 'Essential strategies and practices for engineering managers leading growing teams. Focus on communication, delegation, and team empowerment.',
-      imageUrl: 'https://source.unsplash.com/1600x900/?meeting,office',
+      imageUrl: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=300&h=169&q=60',
       readTime: 6
     }
   ]
