@@ -144,15 +144,15 @@ export default function Hero() {
           py={2}
         >
           <VStack spacing={1} flex="0.6">
-
             <Heading
               as="h1"
-              fontSize={{ base: "4xl", md: "6xl" }}
+              fontSize={{ base: "3xl", md: "5xl" }}
               fontWeight="900"
               lineHeight="1.1"
               color={textColor}
               letterSpacing="-0.03em"
               mb={2}
+              whiteSpace="nowrap"
             >
               Hi, I'm{' '}
               <Text
@@ -194,7 +194,7 @@ export default function Hero() {
               }}
             >
               <Heading
-                fontSize={{ base: "xl", md: "3xl" }}
+                fontSize={{ base: "lg", md: "2xl" }}
                 fontWeight="500"
                 color="whiteAlpha.900"
                 letterSpacing="0.05em"
@@ -215,7 +215,7 @@ export default function Hero() {
             </Box>
 
             <Text 
-              fontSize={{ base: "md", md: "lg" }}
+              fontSize={{ base: "sm", md: "md" }}
               maxW="600px" 
               color={textColor}
               opacity={0.9}
