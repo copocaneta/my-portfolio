@@ -92,19 +92,55 @@ export default function Hero() {
           <VStack spacing={2} flex="0.6">
             <Heading
               as="h1"
-              size="3xl"
-              fontWeight="bold"
-              lineHeight="1.2"
+              fontSize={{ base: "4xl", md: "6xl" }}
+              fontWeight="900"
+              lineHeight="0.9"
               color={textColor}
+              letterSpacing="-0.02em"
+              mb={6}
             >
-              Hi, I'm Thiago Bernardi —
-              <br />
-              <Text as="span" color="brand.primary" fontSize="2xl">
-                an Engineering Manager, Mentor, and Tech Enthusiast
+              Hi, I'm{' '}
+              <Text
+                as="span"
+                bgGradient="linear(to-r, brand.primary, brand.accent)"
+                bgClip="text"
+                fontFamily="'Orbitron', sans-serif"
+                display="inline-block"
+                transform="translateY(4px)"
+              >
+                Thiago Bernardi
               </Text>
             </Heading>
 
-            <Text fontSize="lg" maxW="600px" color={textColor}>
+            <Heading
+              fontSize={{ base: "2xl", md: "4xl" }}
+              fontWeight="500"
+              color="whiteAlpha.800"
+              letterSpacing="0.05em"
+              mb={8}
+              fontFamily="'Inter', sans-serif"
+              textTransform="uppercase"
+            >
+              an Engineering Manager,
+              <br />
+              <Text 
+                as="span" 
+                color="brand.primary"
+                fontWeight="700"
+              >
+                Mentor & Tech Enthusiast
+              </Text>
+            </Heading>
+
+            <Text 
+              fontSize={{ base: "md", md: "xl" }}
+              maxW="600px" 
+              color={textColor}
+              opacity={0.85}
+              letterSpacing="0.02em"
+              lineHeight="1.8"
+              fontWeight="400"
+            >
               Passionate about crafting scalable systems and empowering teams to deliver impactful solutions.
             </Text>
           </VStack>

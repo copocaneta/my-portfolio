@@ -14,8 +14,8 @@ const theme = extendTheme({
     })
   },
   fonts: {
-    heading: 'Roboto, sans-serif',
-    body: 'Roboto, sans-serif',
+    heading: "'Orbitron', 'Inter', sans-serif",
+    body: "'Inter', sans-serif",
   },
   colors: {
     brand: {

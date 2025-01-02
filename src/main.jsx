@@ -12,9 +12,15 @@ document.head.appendChild(robotoFont);
 
 // Add Orbitron font
 const orbitronFont = document.createElement('link');
-orbitronFont.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap';
+orbitronFont.href = 'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&display=swap';
 orbitronFont.rel = 'stylesheet';
 document.head.appendChild(orbitronFont);
+
+// Add Inter font
+const interFont = document.createElement('link');
+interFont.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap';
+interFont.rel = 'stylesheet';
+document.head.appendChild(interFont);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
