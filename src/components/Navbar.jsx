@@ -25,9 +25,21 @@ import { motion } from 'framer-motion'
 const MotionBox = motion(Box)
 
 const BrandLogo = () => (
-  <HStack spacing={1}>
+  <HStack 
+    spacing={1}
+    position="relative"
+    _after={{
+      content: '""',
+      position: 'absolute',
+      bottom: '-2px',
+      left: '25%',
+      width: '50%',
+      height: '2px',
+      bgGradient: "linear(to-r, transparent, brand.primary, transparent)",
+    }}
+  >
     <MotionBox
-      whileHover={{ rotate: 15 }}
+      whileHover={{ rotate: 15, scale: 1.2 }}
       transition={{ duration: 0.2 }}
       display="flex"
       alignItems="center"
@@ -43,6 +55,7 @@ const BrandLogo = () => (
       bgClip="text"
       _hover={{
         bgGradient: "linear(to-r, brand.secondary, brand.primary)",
+        letterSpacing: "0.05em"
       }}
       transition="all 0.3s ease"
     >
@@ -53,7 +66,30 @@ const BrandLogo = () => (
 
 const NavButton = ({ children, to }) => (
   <Link to={to} smooth={true} duration={500} offset={-70}>
-    <Button variant="ghost" size="sm">
+    <Button
+      variant="ghost"
+      size="sm"
+      position="relative"
+      overflow="hidden"
+      _before={{
+        content: '""',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        width: '0%',
+        height: '2px',
+        bgGradient: "linear(to-r, brand.primary, brand.accent)",
+        transition: 'width 0.3s ease-in-out',
+      }}
+      _hover={{
+        bg: 'transparent',
+        _before: {
+          width: '100%',
+        },
+        transform: 'translateY(-2px)',
+      }}
+      transition="all 0.3s ease"
+    >
       {children}
     </Button>
   </Link>
@@ -69,9 +105,12 @@ export default function Navbar() {
     <Box
       position="fixed"
       w="100vw"
-      bg={useColorModeValue('gray.100', 'gray.900')}
+      backdropFilter="blur(10px)"
+      bg={useColorModeValue('rgba(247, 250, 252, 0.8)', 'rgba(26, 32, 44, 0.8)')}
       zIndex="sticky"
       left={0}
+      borderBottom="1px solid"
+      borderColor={useColorModeValue('gray.200', 'gray.700')}
     >
       <Box
         maxW="736px"
