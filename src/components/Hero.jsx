@@ -39,18 +39,38 @@ function ModelCanvas() {
       <pointLight position={[0, -3, 0]} intensity={4} />
       <pointLight position={[3, 0, 0]} intensity={4} />
       <pointLight position={[-3, 0, 0]} intensity={4} />
-      <pointLight position={[0, 0, 3]} intensity={4} />
-      <pointLight position={[0, 0, -3]} intensity={4} />
+      <pointLight position={[0, -1, 3]} intensity={6} />
+      <pointLight position={[0, -1, -3]} intensity={6} />
+      <pointLight position={[3, -1, 0]} intensity={6} />
+      <pointLight position={[-3, -1, 0]} intensity={6} />
+      <pointLight position={[3, -1, 3]} intensity={4} />
+      <pointLight position={[-3, -1, 3]} intensity={4} />
+      <pointLight position={[3, -1, -3]} intensity={4} />
+      <pointLight position={[-3, -1, -3]} intensity={4} />
       <spotLight
         position={[0, 5, 5]}
         angle={0.7}
         penumbra={1}
-        intensity={6}
+        intensity={8}
         castShadow
       />
       <spotLight
         position={[0, 0, 5]}
         angle={0.5}
+        penumbra={1}
+        intensity={8}
+        castShadow
+      />
+      <spotLight
+        position={[0, -1, 4]}
+        angle={0.6}
+        penumbra={1}
+        intensity={6}
+        castShadow
+      />
+      <spotLight
+        position={[0, -1, -4]}
+        angle={0.6}
         penumbra={1}
         intensity={6}
         castShadow
