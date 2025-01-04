@@ -15,12 +15,16 @@ import {
   DrawerHeader,
   DrawerBody,
   DrawerCloseButton,
+  Container,
+  Text,
 } from '@chakra-ui/react'
 import { FaSun, FaMoon } from 'react-icons/fa'
 import { GiSharkFin } from 'react-icons/gi'
 import { HiMenu } from 'react-icons/hi'
-import { Link } from 'react-scroll'
+import { Link as ScrollLink } from 'react-scroll'
+import { Link as RouterLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 const MotionBox = motion(Box)
 
@@ -73,8 +77,12 @@ const BrandLogo = () => (
   </HStack>
 )
 
-const NavButton = ({ children, to }) => (
-  <Link to={to} smooth={true} duration={500} offset={-70}>
+const NavButton = ({ children, to, onClick }) => (
+  <Box 
+    as="button" 
+    onClick={onClick}
+    cursor="pointer"
+  >
     <Button
       variant="ghost"
       size="sm"
@@ -101,13 +109,42 @@ const NavButton = ({ children, to }) => (
     >
       {children}
     </Button>
-  </Link>
+  </Box>
 )
 
 export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode()
   const { isOpen, onOpen, onClose } = useDisclosure()
-  
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const handleNavClick = async (section, shouldCloseMenu = false) => {
+    if (shouldCloseMenu) {
+      onClose()
+    }
+
+    if (location.pathname !== '/') {
+      // First navigate to home
+      await navigate('/', { replace: true })
+      
+      // After navigation is complete, scroll to the section
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          const element = document.getElementById(section)
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+      })
+    } else {
+      // If we're already on the home page, just scroll
+      const element = document.getElementById(section)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }
+
   const menuItems = ['About', 'Experience', 'Expertise', 'Blog', 'Connect']
 
   return (
@@ -134,7 +171,11 @@ export default function Navbar() {
           <Flex alignItems="center" display={{ base: 'none', md: 'flex' }}>
             <Stack direction="row" spacing={4}>
               {menuItems.map((item) => (
-                <NavButton key={item} to={item.toLowerCase()}>
+                <NavButton 
+                  key={item} 
+                  to={item.toLowerCase()}
+                  onClick={() => handleNavClick(item.toLowerCase())}
+                >
                   {item}
                 </NavButton>
               ))}
@@ -171,18 +212,16 @@ export default function Navbar() {
               <DrawerBody>
                 <VStack spacing={4} align="stretch" pt={4}>
                   {menuItems.map((item) => (
-                    <Link
+                    <Box
                       key={item}
-                      to={item.toLowerCase()}
-                      smooth={true}
-                      duration={500}
-                      offset={-70}
-                      onClick={onClose}
+                      as="button"
+                      w="full"
+                      onClick={() => handleNavClick(item.toLowerCase(), true)}
                     >
                       <Button variant="ghost" w="full">
                         {item}
                       </Button>
-                    </Link>
+                    </Box>
                   ))}
                 </VStack>
               </DrawerBody>
