@@ -1,46 +1,31 @@
-import { Box, Container, Heading, VStack, Text, HStack, IconButton, Link } from '@chakra-ui/react'
-import { FaDiscord, FaGithub, FaLinkedin, FaStackOverflow } from 'react-icons/fa'
-
-const SocialButton = ({ icon, label, href }) => (
-  <IconButton
-    as={Link}
-    href={href}
-    target="_blank"
-    aria-label={label}
-    icon={icon}
-    size="lg"
-    fontSize="24px"
-    colorScheme="purple"
-    variant="ghost"
-    isRound
-    _hover={{
-      transform: 'translateY(-2px)',
-      bg: 'whiteAlpha.200'
-    }}
-  />
-)
+import { Box, Container, Heading, Text, VStack, HStack, Link, Icon } from '@chakra-ui/react'
+import { FaGithub, FaLinkedin, FaStackOverflow, FaDiscord } from 'react-icons/fa'
 
 export default function Connect() {
-  const socials = [
+  const socialLinks = [
     {
-      icon: <FaDiscord />,
-      label: 'Discord',
-      href: 'YOUR_DISCORD_LINK'
+      name: 'GitHub',
+      url: 'https://github.com/copocaneta/',
+      icon: FaGithub,
+      color: 'gray.100'
     },
     {
-      icon: <FaGithub />,
-      label: 'GitHub',
-      href: 'https://github.com/YourUsername'
+      name: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/thiago-bernardi/',
+      icon: FaLinkedin,
+      color: '#0A66C2'
     },
     {
-      icon: <FaLinkedin />,
-      label: 'LinkedIn',
-      href: 'https://linkedin.com/in/YourUsername'
+      name: 'Stack Overflow',
+      url: 'https://stackoverflow.com/users/8754987/thiago-bernardi/',
+      icon: FaStackOverflow,
+      color: '#F48024'
     },
     {
-      icon: <FaStackOverflow />,
-      label: 'Stack Overflow',
-      href: 'https://stackoverflow.com/users/YourUserId'
+      name: 'Discord',
+      url: 'https://discordapp.com/users/724435328823197757/',
+      icon: FaDiscord,
+      color: '#5865F2'
     }
   ]
 
@@ -51,18 +36,33 @@ export default function Connect() {
       id="connect"
     >
       <Container maxW="container.xl">
-        <VStack spacing={8} textAlign="center">
-          <Heading as="h2" size="xl">
-            Let's Connect
-          </Heading>
-          
-          <Text fontSize="lg" maxW="600px">
-            I'd love to connect! Join me on Discord, or follow me on these platforms:
-          </Text>
+        <VStack spacing={8} align="center">
+          <VStack spacing={4} textAlign="center">
+            <Heading as="h2" size="xl">
+              Let's Connect
+            </Heading>
+            <Text fontSize="lg" maxW="600px">
+              Feel free to reach out through any of these platforms. I'm always open to discussing new projects, ideas, or opportunities.
+            </Text>
+          </VStack>
 
           <HStack spacing={6} pt={4}>
-            {socials.map((social, index) => (
-              <SocialButton key={index} {...social} />
+            {socialLinks.map((social) => (
+              <Link
+                key={social.name}
+                href={social.url}
+                isExternal
+                _hover={{ transform: 'translateY(-2px)' }}
+                transition="all 0.2s"
+              >
+                <Icon
+                  as={social.icon}
+                  boxSize={8}
+                  color={social.color}
+                  _hover={{ color: 'purple.400' }}
+                  transition="all 0.2s"
+                />
+              </Link>
             ))}
           </HStack>
         </VStack>
