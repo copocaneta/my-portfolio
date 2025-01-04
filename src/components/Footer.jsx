@@ -34,7 +34,7 @@ export default function Footer() {
           align="center"
           spacing={4}
         >
-          <Text>© 2025 Thiago Bernardi. All rights reserved.</Text>
+          <Text fontSize="12px">© 2025 Thiago Bernardi. All rights reserved.</Text>
           
           <HStack spacing={6}>
             {sections.map((section) => (
