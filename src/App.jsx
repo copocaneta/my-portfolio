@@ -56,7 +56,23 @@ function App() {
               </Box>
             </Box>
           } />
-          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/blog/:slug" element={
+            <Box 
+              width="100%" 
+              display="flex"
+              flexDirection="column"
+              alignItems="center"
+            >
+              <Box 
+                width="100%" 
+                maxW="736px"
+                position="relative"
+              >
+                <BlogPost />
+                <Footer />
+              </Box>
+            </Box>
+          } />
         </Routes>
       </Box>
     </Router>
