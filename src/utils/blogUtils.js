@@ -1,9 +1,12 @@
 import frontMatter from 'front-matter'
 import { marked } from 'marked'
 
+// todo: maybe add redis cache for prod environment
 let cachedPosts = null
 
 async function loadPosts() {
+  // todo: maybe move posts to cms like strapi or contentful later
+  // todo: add tags/categories to posts for better filtering
   const posts = [
     {
       path: '/src/blog/posts/01.md',
@@ -29,6 +32,7 @@ export async function getAllPosts() {
   const processedPosts = []
   const posts = await loadPosts()
   
+  // todo: add error boundary component to handle failed post loads better
   for (const { path, content } of posts) {
     try {
       const { attributes, body } = frontMatter(content)
@@ -44,6 +48,7 @@ export async function getAllPosts() {
     }
   }
   
+  // todo: add more sort options (by title, tags etc)
   const sortedPosts = processedPosts.sort((a, b) => new Date(b.date) - new Date(a.date))
   
   if (import.meta.env.PROD) {
@@ -53,6 +58,7 @@ export async function getAllPosts() {
   return sortedPosts
 }
 
+// todo: maybe add syntax highlighting for code blocks
 export function parseMarkdown(content) {
   return marked(content)
 } 

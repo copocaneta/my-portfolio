@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { getAllPosts, parseMarkdown } from '../utils/blogUtils'
 
+// todo: add loading state and error handling with nice ui feedback
 export default function BlogPost() {
   const [post, setPost] = useState(null)
   const [content, setContent] = useState('')
