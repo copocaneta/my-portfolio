@@ -1,33 +1,41 @@
 import frontMatter from 'front-matter'
 import { marked } from 'marked'
 
-// Cache the posts in production
 let cachedPosts = null
 
+async function loadPosts() {
+  const posts = [
+    {
+      path: '/src/blog/posts/01.md',
+      content: (await import('@/blog/posts/01.md?raw')).default
+    },
+    {
+      path: '/src/blog/posts/02.md',
+      content: (await import('@/blog/posts/02.md?raw')).default
+    },
+    {
+      path: '/src/blog/posts/03.md',
+      content: (await import('@/blog/posts/03.md?raw')).default
+    }
+  ]
+  return posts
+}
+
 export async function getAllPosts() {
-  // Return cached posts in production
   if (cachedPosts && import.meta.env.PROD) {
     return cachedPosts
   }
 
-  const posts = []
+  const processedPosts = []
+  const posts = await loadPosts()
   
-  // Log available modules
-  const modules = import.meta.glob('../blog/posts/*.md', { 
-    as: 'raw',
-    eager: true
-  })
-  
-  console.log('Available markdown files:', Object.keys(modules))
-  
-  for (const path in modules) {
+  for (const { path, content } of posts) {
     try {
-      const content = modules[path]
       const { attributes, body } = frontMatter(content)
       
-      posts.push({
+      processedPosts.push({
         ...attributes,
-        slug: path.replace('../blog/posts/', '').replace('.md', ''),
+        slug: path.replace('/src/blog/posts/', '').replace('.md', ''),
         excerpt: body.split('\n\n')[0],
         content: body
       })
@@ -36,11 +44,8 @@ export async function getAllPosts() {
     }
   }
   
-  console.log('Total posts found:', posts.length)
+  const sortedPosts = processedPosts.sort((a, b) => new Date(b.date) - new Date(a.date))
   
-  const sortedPosts = posts.sort((a, b) => new Date(b.date) - new Date(a.date))
-  
-  // Cache the posts in production
   if (import.meta.env.PROD) {
     cachedPosts = sortedPosts
   }
